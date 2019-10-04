@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: ab4505494134c8449b472d5e19ba0742
+guid: a884f2cd8eb57344dbceb4f895717166
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3790987070869363784
-    second: WAIFU_OVERWORLD_FOREWARD_0
+      213: -8705694104676066505
+    second: WAIFU_OVERWORLD_LEFT_0
   - first:
-      213: 5653105262058599679
-    second: WAIFU_OVERWORLD_FOREWARD_1
+      213: -1501827376245539205
+    second: WAIFU_OVERWORLD_LEFT_1
   - first:
-      213: -2961797101317433593
-    second: WAIFU_OVERWORLD_FOREWARD_2
+      213: -2120888767469262346
+    second: WAIFU_OVERWORLD_LEFT_2
   - first:
-      213: 8442148329122329175
-    second: WAIFU_OVERWORLD_FOREWARD_3
+      213: -1536254820859548632
+    second: WAIFU_OVERWORLD_LEFT_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -54,11 +54,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 128
-  spriteBorder: {x: 96, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 128
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -84,10 +84,10 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 128
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WAIFU_OVERWORLD_FOREWARD_0
+      name: WAIFU_OVERWORLD_LEFT_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d92d1b4aedb15346878c124e8af98e9
-      internalID: -3790987070869363784
+      spriteID: aba1f1800a0a13049a5a19239b37b689
+      internalID: -8705694104676066505
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WAIFU_OVERWORLD_FOREWARD_1
+      name: WAIFU_OVERWORLD_LEFT_1
       rect:
         serializedVersion: 2
         x: 32
@@ -133,14 +133,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71cabbb91adf4a64d8d0bea8769b0212
-      internalID: 5653105262058599679
+      spriteID: a5a28646f82cd6f42a8a6cb982ce22bd
+      internalID: -1501827376245539205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WAIFU_OVERWORLD_FOREWARD_2
+      name: WAIFU_OVERWORLD_LEFT_2
       rect:
         serializedVersion: 2
         x: 64
@@ -154,14 +154,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6013272ce9b04e4cbcc2188168a2fad
-      internalID: -2961797101317433593
+      spriteID: 7772414120ea0aa45ac82a178b873254
+      internalID: -2120888767469262346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WAIFU_OVERWORLD_FOREWARD_3
+      name: WAIFU_OVERWORLD_LEFT_3
       rect:
         serializedVersion: 2
         x: 96
@@ -175,8 +175,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cedd24bdd689e84c9f84a52e9ef4b2f
-      internalID: 8442148329122329175
+      spriteID: 12f0632ef58c9f54badccf2d876c5eb9
+      internalID: -1536254820859548632
       vertices: []
       indices: 
       edges: []
