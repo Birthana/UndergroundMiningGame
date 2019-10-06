@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MiningEvent : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D col)
+    public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
-        Debug.Log("Mining Game Start");
+        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("Mining Game Start");
+        }
     }
 }
