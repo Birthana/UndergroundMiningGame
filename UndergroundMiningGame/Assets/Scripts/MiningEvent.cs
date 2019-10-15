@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class MiningEvent : MonoBehaviour
 {
@@ -16,7 +17,8 @@ public class MiningEvent : MonoBehaviour
             if (tile.sprite.Equals(GetComponent<RandomMiningEvent>().placeholder))
             {
                 //tilemap.SetTile(tilePosition, null);
-                Debug.Log("Mining Game Start");
+                //Debug.Log("Mining Game Start");
+                SceneManager.LoadScene(2);
             }
         }
     }
