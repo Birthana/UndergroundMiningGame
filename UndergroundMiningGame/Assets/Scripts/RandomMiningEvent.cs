@@ -17,6 +17,31 @@ public class RandomMiningEvent : MonoBehaviour
     public void RandomMiningEventSpawn()
     {
         tilemap = GetComponent<Tilemap>();
+        int count = 0;
+        foreach (var position in tilemap.cellBounds.allPositionsWithin)
+        {
+            Vector3Int tilePosition = new Vector3Int(position.x, position.y, position.z);
+            if (tilemap.HasTile(tilePosition))
+            {
+                count++;
+            }
+        }
+        int rng = Random.Range(0, count);
+        count = 0;
+        foreach (var position in tilemap.cellBounds.allPositionsWithin)
+        {
+            Vector3Int tilePosition = new Vector3Int(position.x, position.y, position.z);
+            if (tilemap.HasTile(tilePosition))
+            {
+                if (count == rng)
+                {
+                    Tile newTile = ScriptableObject.CreateInstance<Tile>();
+                    newTile.sprite = placeholder;
+                    tilemap.SetTile(tilePosition, newTile);
+                }
+                count++;
+            }
+        }
         foreach (var position in tilemap.cellBounds.allPositionsWithin)
         {
             Vector3Int tilePosition = new Vector3Int(position.x, position.y, position.z);
@@ -28,13 +53,7 @@ public class RandomMiningEvent : MonoBehaviour
                     Tile newTile = ScriptableObject.CreateInstance<Tile>();
                     newTile.sprite = placeholder;
                     tilemap.SetTile(tilePosition, newTile);
-                    //Debug.Log("Replaced Tile at " + tilePosition);
                 }
-                else
-                {
-                    //Debug.Log("Kept Tile at " + tilePosition);
-                }
-
             }
         }
     }
