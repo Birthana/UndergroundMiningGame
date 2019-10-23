@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
             Vector3Int tilePosition = tilemap.WorldToCell(clickedPosition);
             if (tilemap.HasTile(tilePosition))
             {
-                Debug.Log(tilePosition);
+                //Debug.Log(tilePosition);
                 clicks++;
                 tilemap.SetTile(tilePosition, null);
             }
