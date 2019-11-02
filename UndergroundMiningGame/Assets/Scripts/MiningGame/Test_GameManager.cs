@@ -18,17 +18,27 @@ public class Test_GameManager : MonoBehaviour
     public int clicks = 0;
     public int max = 15;
     public Gem[] gemArray;
-    int points = 0;
+    //int points = 0;
 
     public TextMeshProUGUI clickCountRatio;
     public GameObject healthBar;
 
+    public Inventory inventory;
+    public Item[] placeholders;
+
+    GameObject canvas;
+
+    public GameObject selector;
+
     void Start()
     {
-        
         tilemap = GetComponent<Tilemap>();
         cam = Camera.main;
         gemArray = GenerateGems();
+        inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        selector = GameObject.FindGameObjectWithTag("Selector");
+        //canvas = GameObject.FindGameObjectWithTag("Inventory");
+        //canvas.SetActive(false);
     }
 
     public Gem[] GenerateGems()
@@ -140,38 +150,141 @@ public class Test_GameManager : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
-            Vector3 clickedPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-
-            Vector3Int tilePosition = tilemap.WorldToCell(clickedPosition);
-            if (tilemap.HasTile(tilePosition))
+            if (selector.GetComponent<Selector>().GetItemName().Equals("tools_9"))
             {
-                //Debug.Log(tilePosition);
-                clicks++;
+                Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
+                RemoveTile(tilePosition);
+                int rng = Random.Range(0, 6);
+                switch (rng)
+                {
+                    case 0:
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        break;
+                    case 1:
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        break;
+                    case 2:
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        break;
+                    case 3:
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        break;
+                    case 4:
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        break;
+                    case 5:
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        break;
+                }
+
+                if (tilemap.HasTile(tilePosition + new Vector3Int(1, 0, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                    }
+                }
+                if (tilemap.HasTile(tilePosition + new Vector3Int(-1, 0, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                    }
+                }
+                if (tilemap.HasTile(tilePosition + new Vector3Int(0, 1, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                    }
+                }
+                if (tilemap.HasTile(tilePosition + new Vector3Int(0, -1, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                    }
+                }
+                if (tilemap.HasTile(tilePosition + new Vector3Int(1, 1, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(1, 1, 0));
+                    }
+                }
+                if (tilemap.HasTile(tilePosition + new Vector3Int(-1, -1, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(-1, -1, 0));
+                    }
+                }
+                if (tilemap.HasTile(tilePosition + new Vector3Int(1, -1, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(1, -1, 0));
+                    }
+                }
+                if (tilemap.HasTile(tilePosition + new Vector3Int(-1, 1, 0)))
+                {
+                    int extra = Random.Range(0, 10);
+                    if (extra == 0)
+                    {
+                        RemoveTile(tilePosition + new Vector3Int(-1, 1, 0));
+                    }
+                }
+
+                clicks += 3;
                 clickCountRatio.text = (max - clicks) + " / " + max;
                 healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max);
-                tilemap.SetTile(tilePosition, null);
             }
+            
         }
 
         if (clicks >= max)//end game
         {
+            //canvas.SetActive(true);
             foreach (var Gem in gemArray)
             {
                 if (Gem.getSize() == 1)
                 {
-                    points += tilemap.HasTile(Gem.getPosition()) ? 0 : 1;
+                    //points += tilemap.HasTile(Gem.getPosition()) ? 0 : 1;
+                    if (!tilemap.HasTile(Gem.getPosition()))
+                    {
+                        inventory.AddItem(placeholders[0]);
+                    }
                 }
                 else if (Gem.getSize() == 2)
                 {
-                    points += (tilemap.HasTile(Gem.getPosition())
+                    //points += 
+                    if(!(tilemap.HasTile(Gem.getPosition())
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
-                        ) ? 0 : 4;
+                        ))
+                    {
+                        inventory.AddItem(placeholders[1]);
+                    }
+                    //? 0 : 4;
                 }
                 else if (Gem.getSize() == 3)
                 {
-                    points += (tilemap.HasTile(Gem.getPosition())
+                    //points += 
+                    if(!(tilemap.HasTile(Gem.getPosition())
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(0, 2, 0))
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
@@ -180,14 +293,33 @@ public class Test_GameManager : MonoBehaviour
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(2, 0, 0))
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(2, 1, 0))
                         || tilemap.HasTile(Gem.getPosition() + new Vector3Int(2, 2, 0))
-                        ) ? 0 : 9;
+                        ))
+                    {
+                        inventory.AddItem(placeholders[2]);
+                    }
+                    //? 0 : 9;
                 }
             }
 
-            Debug.Log(points);
+            //Debug.Log(points);
             //END
             SceneManager.LoadScene(1);
         }
     }
 
+    public Vector3Int ScreenToTilePosition(Vector3 clickedPosition)
+    {
+        Vector3 worldPosition = cam.ScreenToWorldPoint(clickedPosition);
+        Vector3Int tilePosition = tilemap.WorldToCell(worldPosition);
+        return tilePosition;
+    }
+
+    public void RemoveTile(Vector3Int tilePosition)
+    {
+        if (tilemap.HasTile(tilePosition))
+        {
+            
+            tilemap.SetTile(tilePosition, null);
+        }
+    }
 }

@@ -3624,3 +3624,8 @@ MonoBehaviour:
   max: 15
   clickCountRatio: {fileID: 1997233632}
   healthBar: {fileID: 1236319046}
+  inventory: {fileID: 0}
+  placeholders:
+  - {fileID: 11400000, guid: b93bf5524e85bd44e949f8130a7113ce, type: 2}
+  - {fileID: 11400000, guid: 2179acd1050f9634e811f6e30987cf2c, type: 2}
+  - {fileID: 11400000, guid: 5045ed078f6496d4a87bb6d209cced0c, type: 2}

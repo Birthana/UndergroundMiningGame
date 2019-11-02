@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: Test
   image: {fileID: 21300000, guid: a4c9e5433b1360f44bd93f8b84fc83a4, type: 3}
   grade: 1
-  count: 2
+  count: 1

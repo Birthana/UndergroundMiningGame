@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiningGame.unity
     guid: 06d3be762bdb10d4baf311e52104ab83
+  - enabled: 1
+    path: Assets/Scenes/Test_MiningGame.unity
+    guid: a2e008c14ab99cd479a5c0036a03213d
   m_configObjects: {}

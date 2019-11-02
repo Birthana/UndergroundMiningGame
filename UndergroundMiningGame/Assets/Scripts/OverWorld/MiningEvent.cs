@@ -18,7 +18,7 @@ public class MiningEvent : MonoBehaviour
             {
                 //tilemap.SetTile(tilePosition, null);
                 //Debug.Log("Mining Game Start");
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(3);
             }
         }
     }

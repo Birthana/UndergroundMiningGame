@@ -48,9 +48,29 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        inventory.Add(item);
-        //index++;
-        DisplayInventory();
+        if (Contains(item))
+        {
+            foreach (var inventoryItem in inventory)
+            {
+                if (inventoryItem.itemName.Equals(item.itemName) && inventoryItem.GetType().Equals(System.Type.GetType("GemItem")))
+                {
+                    GemItem inventoryGem = (GemItem) inventoryItem;
+                    inventoryGem.count++;
+                }
+            }
+            DisplayInventory();
+        }
+        else
+        {
+            inventory.Add(item);
+            DisplayInventory();
+        }
+    }
+
+    public bool Contains(Item item)
+    {
+        bool result = inventory.Contains(item);
+        return result;
     }
 
     public void DisplayInventory()
