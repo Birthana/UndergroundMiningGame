@@ -9,7 +9,8 @@ public class Inventory : MonoBehaviour
     public List<Item> inventory = new List<Item>();
     public Image[] image;
 
-    public Item placeHolder;
+    public Item basicHammer;
+    public Item basicPick;
 
     public Animator inventoryAnim;
     public Animator moneyAnim;
@@ -26,7 +27,8 @@ public class Inventory : MonoBehaviour
                 temp.text = "";
             }
         }
-        AddItem(placeHolder);
+        AddItem(basicHammer);
+        AddItem(basicPick);
     }
 
     void Update()
@@ -62,6 +64,12 @@ public class Inventory : MonoBehaviour
         }
         else
         {
+            if (item.GetType().Equals(System.Type.GetType("GemItem")))
+            {
+                GemItem tempItem = (GemItem)item;
+                tempItem.count++;
+                item = tempItem;
+            }
             inventory.Add(item);
             DisplayInventory();
         }

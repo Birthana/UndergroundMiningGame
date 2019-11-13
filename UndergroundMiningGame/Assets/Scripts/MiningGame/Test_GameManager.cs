@@ -8,15 +8,15 @@ using TMPro;
 
 public class Test_GameManager : MonoBehaviour
 {
-    public Tilemap tilemap;
+    public Tilemap[] tilemap;
     public Tilemap gemMap;
     public Camera cam;
-    public Sprite gemSprite;
+    public Sprite[] smallGemSprites;
     public Sprite[] gemSprite2x2 = new Sprite[4];
     public Sprite[] gemSprite3x3 = new Sprite[9];
 
     public int clicks = 0;
-    public int max = 15;
+    public int max = 30;
     public Gem[] gemArray;
     //int points = 0;
 
@@ -30,22 +30,34 @@ public class Test_GameManager : MonoBehaviour
 
     public GameObject selector;
 
+    public GameObject player;
+    public GameObject overworld;
+    public GameObject blockade;
+
+    public AudioSource hammerSound;
+    public AudioSource pickSound;
     void Start()
     {
-        tilemap = GetComponent<Tilemap>();
+        //tilemap = GetComponent<Tilemap>();
         cam = Camera.main;
         gemArray = GenerateGems();
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
         selector = GameObject.FindGameObjectWithTag("Selector");
         //canvas = GameObject.FindGameObjectWithTag("Inventory");
         //canvas.SetActive(false);
+        player = GameObject.FindGameObjectWithTag("Player");
+        player.SetActive(false);
+        overworld = GameObject.FindGameObjectWithTag("Tilemap");
+        overworld.SetActive(false);
+        blockade = GameObject.FindGameObjectWithTag("Blockade");
+        blockade.SetActive(false);
     }
 
     public Gem[] GenerateGems()
     {
         int x = 16;
         int y = 8;
-        Gem[] spawnGems = new Gem[Random.Range(1, 6)];
+        Gem[] spawnGems = new Gem[Random.Range(2, 7)];
         for (int i = 0; i < spawnGems.Length; i++)
         {
             bool creatingGem = true;
@@ -59,8 +71,9 @@ public class Test_GameManager : MonoBehaviour
                     if (rngTile == null)
                     {
                         creatingGem = false;
+                        int rngSmallGem = Random.Range(0, smallGemSprites.Length);
                         Tile newTile = ScriptableObject.CreateInstance<Tile>();
-                        newTile.sprite = gemSprite;
+                        newTile.sprite = smallGemSprites[rngSmallGem];
                         gemMap.SetTile(rngPosition, newTile);
                         spawnGems[i] = new Gem(size, rngPosition);
                     }
@@ -147,114 +160,6 @@ public class Test_GameManager : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (selector.GetComponent<Selector>().GetItemName().Equals("tools_9"))
-            {
-                Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
-                RemoveTile(tilePosition);
-                int rng = Random.Range(0, 6);
-                switch (rng)
-                {
-                    case 0:
-                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                        break;
-                    case 1:
-                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                        break;
-                    case 2:
-                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                        break;
-                    case 3:
-                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                        break;
-                    case 4:
-                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                        break;
-                    case 5:
-                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                        break;
-                }
-
-                if (tilemap.HasTile(tilePosition + new Vector3Int(1, 0, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                    }
-                }
-                if (tilemap.HasTile(tilePosition + new Vector3Int(-1, 0, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                    }
-                }
-                if (tilemap.HasTile(tilePosition + new Vector3Int(0, 1, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                    }
-                }
-                if (tilemap.HasTile(tilePosition + new Vector3Int(0, -1, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                    }
-                }
-                if (tilemap.HasTile(tilePosition + new Vector3Int(1, 1, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(1, 1, 0));
-                    }
-                }
-                if (tilemap.HasTile(tilePosition + new Vector3Int(-1, -1, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(-1, -1, 0));
-                    }
-                }
-                if (tilemap.HasTile(tilePosition + new Vector3Int(1, -1, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(1, -1, 0));
-                    }
-                }
-                if (tilemap.HasTile(tilePosition + new Vector3Int(-1, 1, 0)))
-                {
-                    int extra = Random.Range(0, 10);
-                    if (extra == 0)
-                    {
-                        RemoveTile(tilePosition + new Vector3Int(-1, 1, 0));
-                    }
-                }
-
-                clicks += 3;
-                clickCountRatio.text = (max - clicks) + " / " + max;
-                healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max);
-            }
-            
-        }
-
         if (clicks >= max)//end game
         {
             //canvas.SetActive(true);
@@ -263,18 +168,29 @@ public class Test_GameManager : MonoBehaviour
                 if (Gem.getSize() == 1)
                 {
                     //points += tilemap.HasTile(Gem.getPosition()) ? 0 : 1;
-                    if (!tilemap.HasTile(Gem.getPosition()))
+                    if (!tilemap[0].HasTile(Gem.getPosition()) && !tilemap[1].HasTile(Gem.getPosition()))
                     {
-                        inventory.AddItem(placeholders[0]);
+                        Tile smallGem = (Tile) gemMap.GetTile(Gem.getPosition());
+                        for (int i = 0; i < placeholders.Length; i++)
+                        {
+                            if (placeholders[i].image.Equals(smallGem.sprite))
+                            {
+                                inventory.AddItem(placeholders[i]);
+                            }
+                        }
                     }
                 }
                 else if (Gem.getSize() == 2)
                 {
                     //points += 
-                    if(!(tilemap.HasTile(Gem.getPosition())
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
+                    if(!(tilemap[0].HasTile(Gem.getPosition())
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
+                        || tilemap[1].HasTile(Gem.getPosition())
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
                         ))
                     {
                         inventory.AddItem(placeholders[1]);
@@ -284,15 +200,24 @@ public class Test_GameManager : MonoBehaviour
                 else if (Gem.getSize() == 3)
                 {
                     //points += 
-                    if(!(tilemap.HasTile(Gem.getPosition())
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(0, 2, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(1, 2, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(2, 0, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(2, 1, 0))
-                        || tilemap.HasTile(Gem.getPosition() + new Vector3Int(2, 2, 0))
+                    if(!(tilemap[0].HasTile(Gem.getPosition())
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(0, 2, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(1, 2, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(2, 0, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(2, 1, 0))
+                        || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(2, 2, 0))
+                        || tilemap[1].HasTile(Gem.getPosition())
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(0, 2, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(1, 2, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(2, 0, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(2, 1, 0))
+                        || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(2, 2, 0))
                         ))
                     {
                         inventory.AddItem(placeholders[2]);
@@ -303,23 +228,125 @@ public class Test_GameManager : MonoBehaviour
 
             //Debug.Log(points);
             //END
+
+            player.SetActive(true);
+            overworld.SetActive(true);
+            blockade.SetActive(true);
             SceneManager.LoadScene(1);
+        }
+    }
+
+    public void OnMouseDown()
+    {
+        if (selector.GetComponent<Selector>().GetItemName().Equals("tools_9"))
+        {
+            hammerSound.time = 0.5f;
+            hammerSound.Play();
+            Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
+            RemoveTile(tilePosition);
+            Vector3Int[] surroundingTilePositions = new Vector3Int[8];
+            surroundingTilePositions[0] = tilePosition + new Vector3Int(1, 0, 0);
+            surroundingTilePositions[1] = tilePosition + new Vector3Int(0, 1, 0);
+            surroundingTilePositions[2] = tilePosition + new Vector3Int(-1, 0, 0);
+            surroundingTilePositions[3] = tilePosition + new Vector3Int(0, -1, 0);
+            surroundingTilePositions[4] = tilePosition + new Vector3Int(1, 1, 0);
+            surroundingTilePositions[5] = tilePosition + new Vector3Int(-1, -1, 0);
+            surroundingTilePositions[6] = tilePosition + new Vector3Int(-1, 1, 0);
+            surroundingTilePositions[7] = tilePosition + new Vector3Int(1, -1, 0);
+
+            int rng = Random.Range(0, 6);
+            switch (rng)
+            {
+                case 0:
+                    RemoveTile(surroundingTilePositions[0]);
+                    RemoveTile(surroundingTilePositions[1]);
+                    surroundingTilePositions[0] = new Vector3Int(0, 0, -1);
+                    surroundingTilePositions[1] = new Vector3Int(0, 0, -1);
+                    break;
+                case 1:
+                    RemoveTile(surroundingTilePositions[1]);
+                    RemoveTile(surroundingTilePositions[2]);
+                    surroundingTilePositions[1] = new Vector3Int(0, 0, -1);
+                    surroundingTilePositions[2] = new Vector3Int(0, 0, -1);
+                    break;
+                case 2:
+                    RemoveTile(surroundingTilePositions[0]);
+                    RemoveTile(surroundingTilePositions[3]);
+                    surroundingTilePositions[0] = new Vector3Int(0, 0, -1);
+                    surroundingTilePositions[3] = new Vector3Int(0, 0, -1);
+                    break;
+                case 3:
+                    RemoveTile(surroundingTilePositions[3]);
+                    RemoveTile(surroundingTilePositions[2]);
+                    surroundingTilePositions[3] = new Vector3Int(0, 0, -1);
+                    surroundingTilePositions[2] = new Vector3Int(0, 0, -1);
+                    break;
+                case 4:
+                    RemoveTile(surroundingTilePositions[3]);
+                    RemoveTile(surroundingTilePositions[1]);
+                    surroundingTilePositions[3] = new Vector3Int(0, 0, -1);
+                    surroundingTilePositions[1] = new Vector3Int(0, 0, -1);
+                    break;
+                case 5:
+                    RemoveTile(surroundingTilePositions[0]);
+                    RemoveTile(surroundingTilePositions[2]);
+                    surroundingTilePositions[0] = new Vector3Int(0, 0, -1);
+                    surroundingTilePositions[2] = new Vector3Int(0, 0, -1);
+                    break;
+            }
+
+            for (int i = 0; i < surroundingTilePositions.Length; i++)
+            {
+                if (!(surroundingTilePositions[i].Equals(new Vector3Int(0, 0, -1))))
+                {
+                    ExtraRemoveTile(surroundingTilePositions[i], 0);
+                }
+            }
+
+            clicks += 3;
+            clickCountRatio.text = (max - clicks) + " / " + max;
+            healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max);
+        }
+        else if (selector.GetComponent<Selector>().GetItemName().Equals("tools_0"))
+        {
+            pickSound.time = 0.5f;
+            pickSound.Play();
+            Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
+            RemoveTile(tilePosition);
+            clicks += 1;
+            clickCountRatio.text = (max - clicks) + " / " + max;
+            healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max);
+        }
+    }
+
+    public void ExtraRemoveTile(Vector3Int position, int chance)
+    {
+        if (tilemap[0].HasTile(position)
+                && tilemap[1].HasTile(position))
+        {
+            int extra = Random.Range(0, 10);
+            if (extra <= chance)
+            {
+                RemoveTile(position);
+            }
         }
     }
 
     public Vector3Int ScreenToTilePosition(Vector3 clickedPosition)
     {
         Vector3 worldPosition = cam.ScreenToWorldPoint(clickedPosition);
-        Vector3Int tilePosition = tilemap.WorldToCell(worldPosition);
+        Vector3Int tilePosition = tilemap[0].WorldToCell(worldPosition);
         return tilePosition;
     }
 
     public void RemoveTile(Vector3Int tilePosition)
     {
-        if (tilemap.HasTile(tilePosition))
+        if (tilemap[0].HasTile(tilePosition))
         {
-            
-            tilemap.SetTile(tilePosition, null);
+            tilemap[0].SetTile(tilePosition, null);
+        }else if (tilemap[1].HasTile(tilePosition))
+        {
+            tilemap[1].SetTile(tilePosition, null);
         }
     }
 }

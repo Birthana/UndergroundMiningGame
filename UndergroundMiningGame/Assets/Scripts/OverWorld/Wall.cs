@@ -11,13 +11,14 @@ public class Wall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        collisionSound = GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
+        collisionSound.time = 0.4f;
         collisionSound.PlayDelayed(1);
     }
 

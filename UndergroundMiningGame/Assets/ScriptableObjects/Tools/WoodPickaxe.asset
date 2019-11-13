@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3ef028b9adc444795bf388f3307b81, type: 3}
-  m_Name: Pearl
+  m_Script: {fileID: 11500000, guid: 173492c0b21aa3b428b915fa0a7feeb8, type: 3}
+  m_Name: WoodPickaxe
   m_EditorClassIdentifier: 
-  itemName: Pearl
-  image: {fileID: 21300000, guid: 61111dbbb17d6fa4994d99f2b4b47afc, type: 3}
-  grade: 2
-  count: 1
+  itemName: WoodPick
+  image: {fileID: 1559704157218881296, guid: fc6c8bc0cad23f945bb082cf864a4fa2, type: 3}
+  type: 1
+  grade: 0

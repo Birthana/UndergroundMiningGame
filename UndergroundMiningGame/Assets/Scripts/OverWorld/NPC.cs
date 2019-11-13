@@ -20,6 +20,12 @@ public class NPC : MonoBehaviour
 
     public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
+        
+        StartCoroutine(DialogueDisplay(collision));
+    }
+
+    IEnumerator DialogueDisplay(UnityEngine.Collision2D collision)
+    {
         if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
         {
             if (collision.gameObject.GetComponent<PlayerMovement>().enabled)
@@ -31,6 +37,7 @@ public class NPC : MonoBehaviour
             {
                 dialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
             }
+            yield return new WaitForSeconds(1.0f);
         }
     }
 }

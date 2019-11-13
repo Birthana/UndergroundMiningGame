@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d3ef028b9adc444795bf388f3307b81, type: 3}
-  m_Name: GemItem
+  m_Name: SmallIronNugget
   m_EditorClassIdentifier: 
-  itemName: Test
-  image: {fileID: 21300000, guid: a4c9e5433b1360f44bd93f8b84fc83a4, type: 3}
-  grade: 1
+  itemName: SmallIronNugget
+  image: {fileID: -3092965628841774516, guid: e95532874f66ddb4d8125b73b30f8f47, type: 3}
+  grade: 0
   count: 1

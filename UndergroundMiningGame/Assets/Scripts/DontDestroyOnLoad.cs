@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class DontDestroyOnLoad : MonoBehaviour
 {
-    static GameObject inventory;
+    static List<string> staticObjects = new List<string>();
 
     void Awake()
     {
-        DontDestroyOnLoad(this.transform.gameObject);
-
-        if (inventory == null)
+        if (!staticObjects.Contains(this.gameObject.name))
         {
-            inventory = this.transform.gameObject;
-        }else
+            staticObjects.Add(this.gameObject.name);
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
         {
             Destroy(this.gameObject);
         }

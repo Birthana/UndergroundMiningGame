@@ -218,8 +218,8 @@ public class SmoothRandTable1 : MonoBehaviour
 
     private void makePath(int r1, int c1, int r2, int c2)
     {
-        table[r1, c1] = 1f;
-        table[r2, c2] = 1f;
+        table[r1, c1] = 1.37f;
+        table[r2, c2] = 1.37f;
         int initV = r2 - r1;
         int initH = c2 - c1;
         int dirV = initV > 0 ? 1 : -1;
@@ -250,7 +250,7 @@ public class SmoothRandTable1 : MonoBehaviour
                     currH -= dirH;
                     c += dirH;
                 }
-                table[r, c] = 1f;
+                table[r, c] = 1.37f;
 
             }
         }
@@ -258,13 +258,13 @@ public class SmoothRandTable1 : MonoBehaviour
         {
             currV -= dirV;
             r += dirV;
-            table[r, c] = 1f;
+            table[r, c] = 1.37f;
         }
         while (currH != 0)
         {
             currH -= dirH;
             c += dirH;
-            table[r, c] = 1f;
+            table[r, c] = 1.37f;
         }
     }
 
@@ -306,7 +306,7 @@ public class SmoothRandTable1 : MonoBehaviour
     /// <summary>This function makes a new table and generates a cave system in it</summary>
     public void GenerateLoopingCave()
     {
-        alpha = 0.29f;
+        alpha = 0.5f;
         rows = 40;
         cols = 40;
         table = new float[rows, cols];
@@ -314,7 +314,7 @@ public class SmoothRandTable1 : MonoBehaviour
         {
             for (int c = 1; c < cols - 1; c++)
             {
-                table[r, c] = Random.Range(0f, 0.7f);
+                table[r, c] = Random.Range(0.2f, 0.4f);
             }
         }
         start = Random.Range(0, rows - 2) + 1;

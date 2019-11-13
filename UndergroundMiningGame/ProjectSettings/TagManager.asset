@@ -8,6 +8,8 @@ TagManager:
   - Inventory
   - Selector
   - InventorySlot
+  - Tilemap
+  - Blockade
   layers:
   - Default
   - TransparentFX
