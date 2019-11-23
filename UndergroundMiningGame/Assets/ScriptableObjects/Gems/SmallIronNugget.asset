@@ -15,4 +15,4 @@ MonoBehaviour:
   itemName: SmallIronNugget
   image: {fileID: -3092965628841774516, guid: e95532874f66ddb4d8125b73b30f8f47, type: 3}
   grade: 0
-  count: 1
+  count: 0

@@ -10,35 +10,49 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     public Animator animator;
+    public Animator animator2;
 
     private Queue<string> sentences;
 
     // Start is called before the first frame update
     void Start()
     {
+        TextMeshProUGUI[] temp = GameObject.FindGameObjectWithTag("Dialogue").GetComponentsInChildren<TextMeshProUGUI>();
+        nameText = temp[0];
+        dialogueText = temp[1];
+        animator = GameObject.FindGameObjectWithTag("Dialogue").GetComponent<Animator>();
+        animator2 = GameObject.FindGameObjectWithTag("YesNoButtons").GetComponent<Animator>();
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, bool isMerchant)
     {
-        animator.SetBool("IsOpen", true);
+        if (isMerchant)
+        {
+            animator.SetBool("IsOpen", true);
+            animator2.SetBool("IsOpen", true);
+        }
+        else
+        {
+            animator.SetBool("IsOpen", true);
+        }
 
         nameText.text = dialogue.name;
 
         sentences.Clear();
-        foreach(string sentence in dialogue.sentences)
+        foreach (string sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
         }
 
-        DisplayNextSentence();
+        DisplayNextSentence(isMerchant);
     }
 
-    public void DisplayNextSentence()
+    public void DisplayNextSentence(bool isMerchant)
     {
-        if(sentences.Count == 0)
+        if (sentences.Count == 0)
         {
-            EndDialogue();
+            EndDialogue(isMerchant);
             return;
         }
 
@@ -46,9 +60,17 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;
     }
 
-    void EndDialogue()
+    public void EndDialogue(bool isMerchant)
     {
-        animator.SetBool("IsOpen", false);
+        if (isMerchant)
+        {
+            animator.SetBool("IsOpen", false);
+            animator2.SetBool("IsOpen", false);
+        }
+        else
+        {
+            animator.SetBool("IsOpen", false);
+        }
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
     }
 

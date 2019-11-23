@@ -10,6 +10,7 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dialogueManager = GameObject.Find("DialogueManager");
     }
 
     // Update is called once per frame
@@ -31,11 +32,11 @@ public class NPC : MonoBehaviour
             if (collision.gameObject.GetComponent<PlayerMovement>().enabled)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
-                dialogueManager.GetComponent<DialogueManager>().StartDialogue(dialogue);
+                dialogueManager.GetComponent<DialogueManager>().StartDialogue(dialogue, false);
             }
             else
             {
-                dialogueManager.GetComponent<DialogueManager>().DisplayNextSentence();
+                dialogueManager.GetComponent<DialogueManager>().DisplayNextSentence(false);
             }
             yield return new WaitForSeconds(1.0f);
         }

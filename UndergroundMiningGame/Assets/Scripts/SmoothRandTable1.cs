@@ -138,9 +138,9 @@ public class SmoothRandTable1 : MonoBehaviour
                 case 470 + 33:
                     return "IR";
                 case 107:
-                    return "OL";
-                case 214:
                     return "OR";
+                case 214:
+                    return "OL";
                 case 22:
                 case 22 + 256:
                 case 22 + 64:
