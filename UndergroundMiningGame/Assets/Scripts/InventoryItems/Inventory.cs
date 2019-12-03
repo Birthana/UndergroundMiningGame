@@ -7,6 +7,8 @@ using TMPro;
 public class Inventory : MonoBehaviour
 {
     public List<Item> inventory = new List<Item>();
+    public Image[] inventorySlot = new Image[18];
+
     public Image[] image;
 
     public Item basicHammer;
@@ -14,6 +16,12 @@ public class Inventory : MonoBehaviour
 
     public Animator inventoryAnim;
     public Animator moneyAnim;
+
+    public int page;
+
+    public Item[] test;
+
+    public Sprite background;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +35,31 @@ public class Inventory : MonoBehaviour
                 temp.text = "";
             }
         }
+
+        page = 1;
+
+        int count = 1;
+        int index = 0;
+        for (int i = 0; i < 18; i++)
+        {
+            while (!image[count].name.Equals("Item"))
+            {
+                count++;
+            }
+            if (image[count].name.Equals("Item"))
+            {
+                inventorySlot[index] = image[count];
+                index++;
+                count++;
+            }
+        }
+
         AddItem(basicHammer);
         AddItem(basicPick);
+        //foreach(var testItem in test)
+        //{
+        //    AddItem(testItem);
+        //}
     }
 
     void Update()
@@ -83,28 +114,56 @@ public class Inventory : MonoBehaviour
 
     public void DisplayInventory()
     {
-        int count = 1;
+        int skipCount = 0;
+        if (page > 1)
+        {
+            skipCount =  18 *  (page - 1);
+        }
+        int inventoryCount = 0;
         foreach (var item in inventory)
         {
-            while (!image[count].name.Equals("Item"))
+            if(skipCount > 0)
             {
-                count++;
+                skipCount--;
+                continue;
             }
-            if (image[count].name.Equals("Item"))
-            {
-                image[count].sprite = item.image;
-                image[count].color = new Color(255, 255, 255, 255);
+
+            if (inventoryCount < 18) {
+                inventorySlot[inventoryCount].sprite = item.image;
+                inventorySlot[inventoryCount].color = new Color(255, 255, 255, 255);
                 if (item.GetType().Equals(System.Type.GetType("GemItem")))
                 {
                     GemItem gemItem = (GemItem)item;
-                    image[count].GetComponentInChildren<TextMeshProUGUI>().text = "" + gemItem.count;
+                    inventorySlot[inventoryCount].GetComponentInChildren<TextMeshProUGUI>().text = "" + gemItem.count;
                 }
                 else
                 {
-                    image[count].GetComponentInChildren<TextMeshProUGUI>().text = "";
+                    inventorySlot[inventoryCount].GetComponentInChildren<TextMeshProUGUI>().text = "";
                 }
-                count++;
+                inventoryCount++;
             }
         }
+        while (inventoryCount < 18)
+        {
+            inventorySlot[inventoryCount].sprite = background;
+            inventorySlot[inventoryCount].color = new Color(150, 150, 150, 255);
+            inventorySlot[inventoryCount].GetComponentInChildren<TextMeshProUGUI>().text = "";
+            inventoryCount++;
+        }
+    }
+
+    public void NextPage(bool next)
+    {
+        if (inventory.Count > page * 18 && next)
+        {
+            page++;
+            
+        }
+        else if (page > 1 && !next)
+        {
+            page--;
+
+        }
+        DisplayInventory();
     }
 }

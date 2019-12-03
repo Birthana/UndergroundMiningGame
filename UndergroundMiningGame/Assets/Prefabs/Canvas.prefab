@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3479720209352442743}
   m_Layer: 5
   m_Name: BuyPanel
-  m_TagString: Untagged
+  m_TagString: YesNoButtons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000030517578, y: -100}
+  m_AnchoredPosition: {x: 0.000030517578, y: 100}
   m_SizeDelta: {x: 1600, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1175855534956675853
@@ -86,7 +86,7 @@ Animator:
   m_GameObject: {fileID: 3047424428738923397}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b245f4903b653614c8bc1ddbf47e0fcc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -167,8 +167,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3568,8 +3568,8 @@ GameObject:
   - component: {fileID: 4429294226508850664}
   - component: {fileID: 4429294226508850667}
   m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
+  m_Name: Money_Text
+  m_TagString: Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3619,9 +3619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '0
-
-'
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3690,9 +3688,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4429294226508850667}
-    characterCount: 2
+    characterCount: 3
     spriteCount: 0
-    spaceCount: 1
+    spaceCount: 0
     wordCount: 1
     linkCount: 0
     lineCount: 1
@@ -4826,7 +4824,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4429294226665856784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4429294227623557776}
+        m_MethodName: NextPage
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &4429294226712627747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6133,7 +6142,7 @@ GameObject:
   - component: {fileID: 4429294226874714005}
   m_Layer: 5
   m_Name: DialoguePanel
-  m_TagString: Untagged
+  m_TagString: Dialogue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7475,7 +7484,7 @@ GameObject:
   - component: {fileID: 4429294227048662407}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Inventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9685,7 +9694,7 @@ GameObject:
   - component: {fileID: 4429294227623557777}
   m_Layer: 5
   m_Name: Inventory
-  m_TagString: Untagged
+  m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9804,10 +9813,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: []
   image: []
-  basicHammer: {fileID: 11400000, guid: c8718e7d8814cfa4ea9f5201a214ba5e, type: 2}
-  basicPick: {fileID: 11400000, guid: 921bd4e8fb0dbf149b4feb233bdbd7e5, type: 2}
+  basicHammer: {fileID: 11400000, guid: 7dc984b3fbb8aa2419a6c9518d67cb5b, type: 2}
+  basicPick: {fileID: 11400000, guid: 08d7cf3c17834ad4ebe56ecdb7ee5525, type: 2}
   inventoryAnim: {fileID: 4429294227623557777}
   moneyAnim: {fileID: 4429294226150365208}
+  page: 0
+  test:
+  - {fileID: 11400000, guid: 327b8a9b908a96b45b6fae7e2d9b67e1, type: 2}
+  - {fileID: 11400000, guid: 52d1a3d10e0264848aaf1d6a7cf74f2c, type: 2}
+  - {fileID: 11400000, guid: ac65942ad4dcd714c951857cb24d0f19, type: 2}
+  - {fileID: 11400000, guid: 42341436abb80ee479754558909c6cb2, type: 2}
+  - {fileID: 11400000, guid: 04e6cff76d3ce424899e39836e261e39, type: 2}
+  - {fileID: 11400000, guid: 33fb702b6ed11e04d9a42b34e498a6c7, type: 2}
+  - {fileID: 11400000, guid: 73074c6677d8e5846a20c18efe8aaec7, type: 2}
+  - {fileID: 11400000, guid: dfa1d688c622b994d9122d48db76ff93, type: 2}
+  - {fileID: 11400000, guid: bf8be5decb9689347990ed5f65969799, type: 2}
+  - {fileID: 11400000, guid: f18e6ddd6b436c1479813a2d142d867b, type: 2}
+  - {fileID: 11400000, guid: e3137d044c69c8a4ca36d88d75f51e6d, type: 2}
+  - {fileID: 11400000, guid: e41cb6fa6d9bd0b499ec67db4da5711a, type: 2}
+  - {fileID: 11400000, guid: af92f42c4ffeab24d93c2f85d45539d6, type: 2}
+  - {fileID: 11400000, guid: 8df7f1bcb638efc43b77b5252ef613c1, type: 2}
+  - {fileID: 11400000, guid: c8718e7d8814cfa4ea9f5201a214ba5e, type: 2}
+  - {fileID: 11400000, guid: 921bd4e8fb0dbf149b4feb233bdbd7e5, type: 2}
+  - {fileID: 11400000, guid: b93bf5524e85bd44e949f8130a7113ce, type: 2}
+  - {fileID: 11400000, guid: 2179acd1050f9634e811f6e30987cf2c, type: 2}
+  background: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!95 &4429294227623557777
 Animator:
   serializedVersion: 3
@@ -11054,8 +11084,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -11173,7 +11203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -291, y: 15}
+  m_AnchoredPosition: {x: -291, y: 25}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5031537411569961148
@@ -11302,7 +11332,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 218.1, y: 15}
+  m_AnchoredPosition: {x: 218.1, y: 25}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5790536103207265944

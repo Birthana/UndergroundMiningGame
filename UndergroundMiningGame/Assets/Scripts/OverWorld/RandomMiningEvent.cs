@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class RandomMiningEvent : MonoBehaviour
 {
     public Tilemap tilemap;
-    public Sprite[] placeholders;
+    public Sprite placeholders;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +37,7 @@ public class RandomMiningEvent : MonoBehaviour
                 if (count == rng)
                 {
                     Tile newTile = ScriptableObject.CreateInstance<Tile>();
-                    newTile.sprite = placeholders[0];
+                    newTile.sprite = placeholders;
                     tilemap.SetTile(tilePosition, newTile);
                 }
                 count++;
@@ -52,7 +52,7 @@ public class RandomMiningEvent : MonoBehaviour
                 if (rngInt == 0)
                 {
                     Tile newTile = ScriptableObject.CreateInstance<Tile>();
-                    newTile.sprite = placeholders[0];
+                    newTile.sprite = placeholders;
                     tilemap.SetTile(tilePosition, newTile);
                 }
             }
@@ -67,7 +67,7 @@ public class RandomMiningEvent : MonoBehaviour
             if (tilemap.HasTile(tilePosition))
             {
                 Tile newTile = ScriptableObject.CreateInstance<Tile>();
-                newTile.sprite = placeholders[1];
+                newTile.sprite = null;
                 tilemap.SetTile(tilePosition, newTile);
             }
         }

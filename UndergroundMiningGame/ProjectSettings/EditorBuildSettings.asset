@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: cdd0f708d79385f4b9753e67e2476a38
   - enabled: 1
-    path: Assets/Scenes/Overworld.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Overworld_Duplicate.unity
+    guid: 10e74347e1a25df46a9e54b953336e18
   - enabled: 1
     path: Assets/Scenes/MiningGame.unity
     guid: 06d3be762bdb10d4baf311e52104ab83

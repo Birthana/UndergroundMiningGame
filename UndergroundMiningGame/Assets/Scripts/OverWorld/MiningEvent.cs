@@ -17,15 +17,19 @@ public class MiningEvent : MonoBehaviour
             Vector3Int tilePosition = tilemap.WorldToCell(temp);
             Tile tile = (Tile) tilemap.GetTile(tilePosition);
             //if (tile.sprite.Equals(wall))
-            if (tile.sprite.Equals(GetComponent<RandomMiningEvent>().placeholders[0]))
+            if (tile.sprite != null)
             {
-                //
-                //Debug.Log("Mining Game Start");
-                SceneManager.LoadScene(3);
-                Tile wallTile = ScriptableObject.CreateInstance<Tile>();
-                wallTile.sprite = wall;
-                tilemap.SetTile(tilePosition, wallTile);
+                if (tile.sprite.Equals(GetComponent<RandomMiningEvent>().placeholders))
+                {
+                    //
+                    //Debug.Log("Mining Game Start");
+                    SceneManager.LoadScene(3);
+                    Tile wallTile = ScriptableObject.CreateInstance<Tile>();
+                    wallTile.sprite = wall;
+                    tilemap.SetTile(tilePosition, wallTile);
+                }
             }
+            
         }
     }
 }

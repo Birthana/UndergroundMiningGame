@@ -239,6 +239,7 @@ public class Test_GameManager : MonoBehaviour
     public void OnMouseDown()
     {
         string toolSpriteName = selector.GetComponent<Selector>().GetItemName();
+        Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
         switch (toolSpriteName)
         {
             case "tools_9":
@@ -251,7 +252,6 @@ public class Test_GameManager : MonoBehaviour
                 break;
             case "tools_14":
                 //Bone Hammer
-                Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
                 RemoveTile(tilePosition);
                 BaseTool(true, 2, 0, 10, 0);
                 break;
@@ -265,7 +265,12 @@ public class Test_GameManager : MonoBehaviour
                 break;
             case "tools_16":
                 //Obsidian Hammer
-
+                RemoveTile(tilePosition);
+                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                BaseTool(true, 2, 0, 10, 0);
                 break;
             case "tools_17":
                 //Magic Hammer
@@ -277,7 +282,16 @@ public class Test_GameManager : MonoBehaviour
                 break;
             case "tools_15":
                 //Diamond Hammer
-
+                RemoveTile(tilePosition);
+                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                BaseTool(true, 2, 0, 10, 0);
                 break;
             case "tools_0":
                 //Wood Pickaxe
@@ -302,7 +316,12 @@ public class Test_GameManager : MonoBehaviour
                 break;
             case "tools_7":
                 //Obsidian Pickaxe
-
+                RemoveTile(tilePosition);
+                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                BaseTool(false, 0, 0, 0, 0);
                 break;
             case "tools_8":
                 //Magic Pickaxe
@@ -314,7 +333,16 @@ public class Test_GameManager : MonoBehaviour
                 break;
             case "tools_6":
                 //Diamond Pickaxe
-
+                RemoveTile(tilePosition);
+                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                BaseTool(false, 0, 0, 0, 0);
                 break;
         }
     }
