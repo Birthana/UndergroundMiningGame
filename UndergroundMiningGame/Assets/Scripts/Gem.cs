@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class Gem
 {
+    public int gemPosition;
     private int size; //1, 2, or 3
     Vector3Int position;
-    //potential value field?
-    public Gem(int newSize, Vector3Int newPosition)
+
+    public Gem(int newGemPosition, int newSize, Vector3Int newPosition)
     {
+        gemPosition = newGemPosition;
         size = newSize;
         position = newPosition;
+    }
+
+    public int getGemPosition()
+    {
+        return gemPosition;
     }
 
     public int getSize()

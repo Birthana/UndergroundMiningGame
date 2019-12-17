@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6525328484027779593}
   - component: {fileID: 6525328484027779592}
   m_Layer: 0
-  m_Name: NPC_Test (2)
+  m_Name: Merchant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,10 @@ MonoBehaviour:
   name: Merchant
   itemToSell: {fileID: 11400000, guid: 327b8a9b908a96b45b6fae7e2d9b67e1, type: 2}
   moneyAmount: 50
+  buy: 1
+  unlock: 0
   money: {fileID: 0}
   inventory: {fileID: 0}
   dialogueManager: {fileID: 0}
   animator: {fileID: 0}
+  blockades: {fileID: 0}

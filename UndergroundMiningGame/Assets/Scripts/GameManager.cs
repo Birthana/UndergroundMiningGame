@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
                         Tile newTile = ScriptableObject.CreateInstance<Tile>();
                         newTile.sprite = gemSprite;
                         gemMap.SetTile(rngPosition, newTile);
-                        spawnGems[i] = new Gem(size, rngPosition);
+                        //spawnGems[i] = new Gem(size, rngPosition);
                     }
                 }else if (size == 2)
                 {
@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
                             gemMap.SetTile(rngPosition + new Vector3Int(1, 0, 0), bottomRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(0, 1, 0), topLeft);
                             gemMap.SetTile(rngPosition + new Vector3Int(1, 1, 0), topRight);
-                            spawnGems[i] = new Gem(size, rngPosition);
+                            //spawnGems[i] = new Gem(size, rngPosition);
                         }
                     }
                 }
@@ -122,7 +122,7 @@ public class GameManager : MonoBehaviour
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 0, 0), bottomRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 1, 0), centerRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 2, 0), topRight);
-                            spawnGems[i] = new Gem(size, rngPosition);
+                            //spawnGems[i] = new Gem(size, rngPosition);
                         }
                     }
                 }

@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class ZoneManager : MonoBehaviour
 {
-    public GameObject[] blockades;
+    public static ZoneManager instance = null;
     public int count;
 
     // Start is called before the first frame update
     void Start()
     {
-        count = 0;
-        //UnlockZone(0);
-        //UnlockZone(1);
-        //UnlockZone(2);
+        if (instance == null)
+        {
+            instance = this;
+            count = 1;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void UnlockZone()
     {
-        Destroy(blockades[count]);
+        Destroy(GameObject.Find("Blockade" + count));
         count++;
     }
 

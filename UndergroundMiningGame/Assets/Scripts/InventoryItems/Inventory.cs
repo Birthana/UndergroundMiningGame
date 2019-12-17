@@ -6,60 +6,63 @@ using TMPro;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance = null;
     public List<Item> inventory = new List<Item>();
     public Image[] inventorySlot = new Image[18];
-
     public Image[] image;
-
     public Item basicHammer;
     public Item basicPick;
-
     public Animator inventoryAnim;
     public Animator moneyAnim;
-
+    public TextMeshProUGUI moneyAmount;
     public int page;
-
-    public Item[] test;
-
     public Sprite background;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        image = this.GetComponentsInChildren<Image>();
-        TextMeshProUGUI[] text = this.GetComponentsInChildren<TextMeshProUGUI>();
-        foreach (var temp in text)
+        if (instance == null)
         {
-            if (!(temp.text.Equals("<") || temp.text.Equals(">")))
+            instance = this;
+            GameObject inventoryUI = GameObject.FindGameObjectWithTag("Inventory");
+            image = inventoryUI.GetComponentsInChildren<Image>();
+            inventoryAnim = inventoryUI.GetComponent<Animator>();
+            TextMeshProUGUI[] text = inventoryUI.GetComponentsInChildren<TextMeshProUGUI>();
+            foreach (var temp in text)
             {
-                temp.text = "";
+                if (!(temp.text.Equals("<") || temp.text.Equals(">")))
+                {
+                    temp.text = "";
+                }
             }
+            page = 1;
+            int count = 1;
+            int index = 0;
+            for (int i = 0; i < 18; i++)
+            {
+                while (!image[count].name.Equals("Item"))
+                {
+                    count++;
+                }
+                if (image[count].name.Equals("Item"))
+                {
+                    inventorySlot[index] = image[count];
+                    index++;
+                    count++;
+                }
+            }
+            AddItem(basicHammer);
+            AddItem(basicPick);
+            GameObject moneyUI = GameObject.FindGameObjectWithTag("Money");
+            moneyAnim = moneyUI.GetComponent<Animator>();
+            moneyAmount = moneyUI.GetComponentInChildren<TextMeshProUGUI>();
         }
-
-        page = 1;
-
-        int count = 1;
-        int index = 0;
-        for (int i = 0; i < 18; i++)
+        else
         {
-            while (!image[count].name.Equals("Item"))
-            {
-                count++;
-            }
-            if (image[count].name.Equals("Item"))
-            {
-                inventorySlot[index] = image[count];
-                index++;
-                count++;
-            }
+            Destroy(gameObject);
         }
+        DontDestroyOnLoad(gameObject);
 
-        AddItem(basicHammer);
-        AddItem(basicPick);
-        //foreach(var testItem in test)
-        //{
-        //    AddItem(testItem);
-        //}
     }
 
     void Update()

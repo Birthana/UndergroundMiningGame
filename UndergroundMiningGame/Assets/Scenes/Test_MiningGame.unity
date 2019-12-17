@@ -5200,12 +5200,16 @@ MonoBehaviour:
   - {fileID: 581973591345907541, guid: e95532874f66ddb4d8125b73b30f8f47, type: 3}
   - {fileID: -3509676430175731180, guid: e95532874f66ddb4d8125b73b30f8f47, type: 3}
   - {fileID: 3240783957031107802, guid: e95532874f66ddb4d8125b73b30f8f47, type: 3}
-  gemSprite2x2:
+  mediumGemSprites:
   - {fileID: 8964096042140927185, guid: 8984294fe059a5445a51a327b06638f5, type: 3}
   - {fileID: 5646105721912351623, guid: 8984294fe059a5445a51a327b06638f5, type: 3}
   - {fileID: 5884439692496706346, guid: 8984294fe059a5445a51a327b06638f5, type: 3}
   - {fileID: -5264977547169710083, guid: 8984294fe059a5445a51a327b06638f5, type: 3}
-  gemSprite3x3:
+  - {fileID: -4809476096301561961, guid: d973dfd575e45cb4c86dbbd890dbb51d, type: 3}
+  - {fileID: 2143536738018586728, guid: d973dfd575e45cb4c86dbbd890dbb51d, type: 3}
+  - {fileID: 7105019953280271759, guid: d973dfd575e45cb4c86dbbd890dbb51d, type: 3}
+  - {fileID: -960904579302724812, guid: d973dfd575e45cb4c86dbbd890dbb51d, type: 3}
+  largeGemSprites:
   - {fileID: 5161953878048520134, guid: cc5af6357562cc344a41d40ef919f8f5, type: 3}
   - {fileID: 2044163606331184711, guid: cc5af6357562cc344a41d40ef919f8f5, type: 3}
   - {fileID: -6968560491645643593, guid: cc5af6357562cc344a41d40ef919f8f5, type: 3}
@@ -5215,15 +5219,21 @@ MonoBehaviour:
   - {fileID: -7580405773348224195, guid: cc5af6357562cc344a41d40ef919f8f5, type: 3}
   - {fileID: -6314459341084480861, guid: cc5af6357562cc344a41d40ef919f8f5, type: 3}
   - {fileID: -5339786788318687957, guid: cc5af6357562cc344a41d40ef919f8f5, type: 3}
+  - {fileID: 5217955905669205917, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: 2925552075519477964, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: -7287759214898570478, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: -7846766063564089914, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: -4053178098297956360, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: -8990656114969740636, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: 6234703456340135487, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: 3585547840413603400, guid: c6811d903da894a468353a8514d052fb, type: 3}
+  - {fileID: 9166048576527485464, guid: c6811d903da894a468353a8514d052fb, type: 3}
   clicks: 0
   max: 30
   clickCountRatio: {fileID: 1997233632}
   healthBar: {fileID: 1236319046}
-  inventory: {fileID: 0}
-  placeholders:
+  smallGemItems:
   - {fileID: 11400000, guid: b93bf5524e85bd44e949f8130a7113ce, type: 2}
-  - {fileID: 11400000, guid: 2179acd1050f9634e811f6e30987cf2c, type: 2}
-  - {fileID: 11400000, guid: 5045ed078f6496d4a87bb6d209cced0c, type: 2}
   - {fileID: 11400000, guid: f0708b5faa276f1409208bc8671766a6, type: 2}
   - {fileID: 11400000, guid: de8e4f6b3696b6543a142398f7c92fba, type: 2}
   - {fileID: 11400000, guid: ef4df4b1bb030794cbfc61e3d06e3aab, type: 2}
@@ -5232,6 +5242,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 492a7fc6783105d46ae4907308107148, type: 2}
   - {fileID: 11400000, guid: 1daf3f8ce84cda34d99913b4bfeafce5, type: 2}
   - {fileID: 11400000, guid: a9a2e82e556268a47b0d1a26588e7522, type: 2}
+  mediumGemItems:
+  - {fileID: 11400000, guid: 2179acd1050f9634e811f6e30987cf2c, type: 2}
+  - {fileID: 11400000, guid: c0f65fbde5fcd814da787c01381005e8, type: 2}
+  largeGemItems:
+  - {fileID: 11400000, guid: 5045ed078f6496d4a87bb6d209cced0c, type: 2}
+  - {fileID: 11400000, guid: 941c2118b65a98f45b89975e83945ce9, type: 2}
   selector: {fileID: 0}
   player: {fileID: 0}
   overworld: {fileID: 0}

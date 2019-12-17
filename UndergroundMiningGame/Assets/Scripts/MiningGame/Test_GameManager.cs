@@ -12,39 +12,27 @@ public class Test_GameManager : MonoBehaviour
     public Tilemap gemMap;
     public Camera cam;
     public Sprite[] smallGemSprites;
-    public Sprite[] gemSprite2x2 = new Sprite[4];
-    public Sprite[] gemSprite3x3 = new Sprite[9];
-
+    public Sprite[] mediumGemSprites;
+    public Sprite[] largeGemSprites;
     public int clicks = 0;
     public int max = 30;
     public Gem[] gemArray;
-    //int points = 0;
-
     public TextMeshProUGUI clickCountRatio;
     public GameObject healthBar;
-
-    public Inventory inventory;
-    public Item[] placeholders;
-
-    GameObject canvas;
-
+    public Item[] smallGemItems;
+    public Item[] mediumGemItems;
+    public Item[] largeGemItems;
     public GameObject selector;
-
     public GameObject player;
     public GameObject overworld;
     public GameObject blockade;
-
     public AudioSource hammerSound;
     public AudioSource pickSound;
     void Start()
     {
-        //tilemap = GetComponent<Tilemap>();
         cam = Camera.main;
         gemArray = GenerateGems();
-        inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
         selector = GameObject.FindGameObjectWithTag("Selector");
-        //canvas = GameObject.FindGameObjectWithTag("Inventory");
-        //canvas.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
         player.SetActive(false);
         overworld = GameObject.FindGameObjectWithTag("Tilemap");
@@ -75,7 +63,7 @@ public class Test_GameManager : MonoBehaviour
                         Tile newTile = ScriptableObject.CreateInstance<Tile>();
                         newTile.sprite = smallGemSprites[rngSmallGem];
                         gemMap.SetTile(rngPosition, newTile);
-                        spawnGems[i] = new Gem(size, rngPosition);
+                        spawnGems[i] = new Gem(rngSmallGem, size, rngPosition);
                     }
                 }else if (size == 2)
                 {
@@ -88,19 +76,20 @@ public class Test_GameManager : MonoBehaviour
                             && rngTile2 == null && rngTile3 == null)
                         {
                             creatingGem = false;
+                            int rngMediumGem = Random.Range(0, mediumGemSprites.Length/4);
                             Tile bottomLeft = ScriptableObject.CreateInstance<Tile>();
-                            bottomLeft.sprite = gemSprite2x2[0];
+                            bottomLeft.sprite = mediumGemSprites[rngMediumGem * 4];
                             Tile bottomRight = ScriptableObject.CreateInstance<Tile>();
-                            bottomRight.sprite = gemSprite2x2[1];
+                            bottomRight.sprite = mediumGemSprites[rngMediumGem * 4 + 1];
                             Tile topLeft = ScriptableObject.CreateInstance<Tile>();
-                            topLeft.sprite = gemSprite2x2[2];
+                            topLeft.sprite = mediumGemSprites[rngMediumGem * 4 + 2];
                             Tile topRight = ScriptableObject.CreateInstance<Tile>();
-                            topRight.sprite = gemSprite2x2[3];
+                            topRight.sprite = mediumGemSprites[rngMediumGem * 4 + 3];
                             gemMap.SetTile(rngPosition, bottomLeft);
                             gemMap.SetTile(rngPosition + new Vector3Int(1, 0, 0), bottomRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(0, 1, 0), topLeft);
                             gemMap.SetTile(rngPosition + new Vector3Int(1, 1, 0), topRight);
-                            spawnGems[i] = new Gem(size, rngPosition);
+                            spawnGems[i] = new Gem(rngMediumGem, size, rngPosition);
                         }
                     }
                 }
@@ -122,24 +111,25 @@ public class Test_GameManager : MonoBehaviour
                             && rngTile8 == null)
                         {
                             creatingGem = false;
+                            int rngLargeGem = Random.Range(0, largeGemSprites.Length/9);
                             Tile bottomLeft = ScriptableObject.CreateInstance<Tile>();
-                            bottomLeft.sprite = gemSprite3x3[0];
+                            bottomLeft.sprite = largeGemSprites[rngLargeGem * 9];
                             Tile bottomMiddle = ScriptableObject.CreateInstance<Tile>();
-                            bottomMiddle.sprite = gemSprite3x3[1];
+                            bottomMiddle.sprite = largeGemSprites[rngLargeGem * 9 + 1];
                             Tile bottomRight = ScriptableObject.CreateInstance<Tile>();
-                            bottomRight.sprite = gemSprite3x3[2];
+                            bottomRight.sprite = largeGemSprites[rngLargeGem * 9 + 2];
                             Tile centerLeft = ScriptableObject.CreateInstance<Tile>();
-                            centerLeft.sprite = gemSprite3x3[3];
+                            centerLeft.sprite = largeGemSprites[rngLargeGem * 9 + 3];
                             Tile centerMiddle = ScriptableObject.CreateInstance<Tile>();
-                            centerMiddle.sprite = gemSprite3x3[4];
+                            centerMiddle.sprite = largeGemSprites[rngLargeGem * 9 + 4];
                             Tile centerRight = ScriptableObject.CreateInstance<Tile>();
-                            centerRight.sprite = gemSprite3x3[5];
+                            centerRight.sprite = largeGemSprites[rngLargeGem * 9 + 5];
                             Tile topLeft = ScriptableObject.CreateInstance<Tile>();
-                            topLeft.sprite = gemSprite3x3[6];
+                            topLeft.sprite = largeGemSprites[rngLargeGem * 9 + 6];
                             Tile topMiddle = ScriptableObject.CreateInstance<Tile>();
-                            topMiddle.sprite = gemSprite3x3[7];
+                            topMiddle.sprite = largeGemSprites[rngLargeGem * 9 + 7];
                             Tile topRight = ScriptableObject.CreateInstance<Tile>();
-                            topRight.sprite = gemSprite3x3[8];
+                            topRight.sprite = largeGemSprites[rngLargeGem * 9 + 8];
                             gemMap.SetTile(rngPosition, bottomLeft);
                             gemMap.SetTile(rngPosition + new Vector3Int(1, 0, 0), bottomMiddle);
                             gemMap.SetTile(rngPosition + new Vector3Int(0, 1, 0), centerLeft);
@@ -149,7 +139,7 @@ public class Test_GameManager : MonoBehaviour
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 0, 0), bottomRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 1, 0), centerRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 2, 0), topRight);
-                            spawnGems[i] = new Gem(size, rngPosition);
+                            spawnGems[i] = new Gem(rngLargeGem, size, rngPosition);
                         }
                     }
                 }
@@ -162,27 +152,18 @@ public class Test_GameManager : MonoBehaviour
     {
         if (clicks >= max)//end game
         {
-            //canvas.SetActive(true);
             foreach (var Gem in gemArray)
             {
                 if (Gem.getSize() == 1)
                 {
-                    //points += tilemap.HasTile(Gem.getPosition()) ? 0 : 1;
                     if (!tilemap[0].HasTile(Gem.getPosition()) && !tilemap[1].HasTile(Gem.getPosition()))
                     {
-                        Tile smallGem = (Tile) gemMap.GetTile(Gem.getPosition());
-                        for (int i = 0; i < placeholders.Length; i++)
-                        {
-                            if (placeholders[i].image.Equals(smallGem.sprite))
-                            {
-                                inventory.AddItem(placeholders[i]);
-                            }
-                        }
+                        //Tile smallGem = (Tile) gemMap.GetTile(Gem.getPosition());
+                        Inventory.instance.AddItem(smallGemItems[Gem.getGemPosition()]);
                     }
                 }
                 else if (Gem.getSize() == 2)
-                {
-                    //points += 
+                { 
                     if(!(tilemap[0].HasTile(Gem.getPosition())
                         || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
                         || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
@@ -193,13 +174,11 @@ public class Test_GameManager : MonoBehaviour
                         || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(1, 1, 0))
                         ))
                     {
-                        inventory.AddItem(placeholders[1]);
+                        Inventory.instance.AddItem(mediumGemItems[Gem.getGemPosition()]);
                     }
-                    //? 0 : 4;
                 }
                 else if (Gem.getSize() == 3)
                 {
-                    //points += 
                     if(!(tilemap[0].HasTile(Gem.getPosition())
                         || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
                         || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(0, 2, 0))
@@ -220,14 +199,10 @@ public class Test_GameManager : MonoBehaviour
                         || tilemap[1].HasTile(Gem.getPosition() + new Vector3Int(2, 2, 0))
                         ))
                     {
-                        inventory.AddItem(placeholders[2]);
+                        Inventory.instance.AddItem(largeGemItems[Gem.getGemPosition()]);
                     }
-                    //? 0 : 9;
                 }
             }
-
-            //Debug.Log(points);
-            //END
 
             player.SetActive(true);
             overworld.SetActive(true);
