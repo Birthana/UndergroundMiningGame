@@ -1,9 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/Overworld_Duplicate.unity
-=======
-- path: Assets/Scenes/OW_General.unity
->>>>>>> ca1504a6c2b43741545506b86916ba1da57e3390
   isLoaded: 1
   isActive: 1
   isSubScene: 0

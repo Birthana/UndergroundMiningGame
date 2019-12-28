@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Test_GameManager : MonoBehaviour
 {
+    public int x;
+    public int y;
     public Tilemap[] tilemap;
     public Tilemap gemMap;
     public Camera cam;
@@ -25,7 +27,7 @@ public class Test_GameManager : MonoBehaviour
     public GameObject selector;
     public GameObject player;
     public GameObject overworld;
-    public GameObject blockade;
+    //public GameObject blockade;
     public AudioSource hammerSound;
     public AudioSource pickSound;
     void Start()
@@ -37,15 +39,15 @@ public class Test_GameManager : MonoBehaviour
         player.SetActive(false);
         overworld = GameObject.FindGameObjectWithTag("Tilemap");
         overworld.SetActive(false);
-        blockade = GameObject.FindGameObjectWithTag("Blockade");
-        blockade.SetActive(false);
+        //blockade = GameObject.FindGameObjectWithTag("Blockade");
+        //blockade.SetActive(false);
     }
 
     public Gem[] GenerateGems()
     {
-        int x = 16;
-        int y = 8;
-        Gem[] spawnGems = new Gem[Random.Range(2, 7)];
+        //int x = 16;
+        //int y = 8;
+        Gem[] spawnGems = new Gem[Random.Range(8, 16)];
         for (int i = 0; i < spawnGems.Length; i++)
         {
             bool creatingGem = true;
@@ -53,8 +55,8 @@ public class Test_GameManager : MonoBehaviour
             {
                 Vector3Int rngPosition = new Vector3Int(Random.Range(0, x), Random.Range(0, y), 0);
                 Tile rngTile = (Tile) gemMap.GetTile(rngPosition);
-                int size = Random.Range(1, 4);
-                if (size == 1)
+                int size = Random.Range(0, 10);
+                if (size == 0 || size == 1 || size == 2 || size == 3 || size == 4 || size == 5 || size == 6)
                 {
                     if (rngTile == null)
                     {
@@ -63,9 +65,9 @@ public class Test_GameManager : MonoBehaviour
                         Tile newTile = ScriptableObject.CreateInstance<Tile>();
                         newTile.sprite = smallGemSprites[rngSmallGem];
                         gemMap.SetTile(rngPosition, newTile);
-                        spawnGems[i] = new Gem(rngSmallGem, size, rngPosition);
+                        spawnGems[i] = new Gem(rngSmallGem, 1, rngPosition);
                     }
-                }else if (size == 2)
+                }else if (size == 7 || size == 8)
                 {
                     if (rngPosition.x != x-1 && rngPosition.y != y-1)
                     {
@@ -89,11 +91,11 @@ public class Test_GameManager : MonoBehaviour
                             gemMap.SetTile(rngPosition + new Vector3Int(1, 0, 0), bottomRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(0, 1, 0), topLeft);
                             gemMap.SetTile(rngPosition + new Vector3Int(1, 1, 0), topRight);
-                            spawnGems[i] = new Gem(rngMediumGem, size, rngPosition);
+                            spawnGems[i] = new Gem(rngMediumGem, 2, rngPosition);
                         }
                     }
                 }
-                else if (size == 3)
+                else if (size == 9)
                 {
                     if (rngPosition.x != x-1 && rngPosition.x != x-2
                         && rngPosition.y != y-1 && rngPosition.y != y-2)
@@ -139,7 +141,7 @@ public class Test_GameManager : MonoBehaviour
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 0, 0), bottomRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 1, 0), centerRight);
                             gemMap.SetTile(rngPosition + new Vector3Int(2, 2, 0), topRight);
-                            spawnGems[i] = new Gem(rngLargeGem, size, rngPosition);
+                            spawnGems[i] = new Gem(rngLargeGem, 3, rngPosition);
                         }
                     }
                 }
@@ -150,6 +152,119 @@ public class Test_GameManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            string toolSpriteName = selector.GetComponent<Selector>().GetItemName();
+            Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
+            if (tilemap[0].GetTile(tilePosition) != null || tilemap[1].GetTile(tilePosition) != null)
+            {
+                switch (toolSpriteName)
+                {
+                    case "tools_9":
+                        //Wood Hammer
+                        BaseTool(true, 2, 0, 15, 5);
+                        break;
+                    case "tools_11":
+                        //Copper Hammer
+                        BaseTool(true, 3, 0, 10, 0);
+                        break;
+                    case "tools_14":
+                        //Bone Hammer
+                        RemoveTile(tilePosition);
+                        BaseTool(true, 2, 0, 10, 0);
+                        break;
+                    case "tools_12":
+                        //Gold Hammer
+                        BaseTool(true, 2, 0, 30, 20);
+                        break;
+                    case "tools_10":
+                        //Iron Hammer
+                        BaseTool(true, 4, 3, 10, 0);
+                        break;
+                    case "tools_16":
+                        //Obsidian Hammer
+                        RemoveTile(tilePosition);
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        BaseTool(true, 2, 0, 10, 0);
+                        break;
+                    case "tools_17":
+                        //Magic Hammer
+                        BaseTool(true, 2, 0, 45, 35);
+                        break;
+                    case "tools_13":
+                        //Steel Hammer
+                        BaseTool(true, 5, 6, 10, 0);
+                        break;
+                    case "tools_15":
+                        //Diamond Hammer
+                        RemoveTile(tilePosition);
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        BaseTool(true, 2, 0, 10, 0);
+                        break;
+                    case "tools_0":
+                        //Wood Pickaxe
+                        BaseTool(false, 0, 0, 5, 5);
+                        break;
+                    case "tools_2":
+                        //Copper Pickaxe
+                        BaseTool(false, 1, 0, 0, 0);
+                        break;
+                    case "tools_5":
+                        //Bone Pickaxe
+                        BaseTool(false, 0, 0, 0, 0);
+                        BaseTool(false, 0, 0, 0, 0);
+                        break;
+                    case "tools_3":
+                        //Gold Pickaxe
+                        BaseTool(false, 0, 0, 10, 10);
+                        break;
+                    case "tools_1":
+                        //Iron Pickaxe
+                        BaseTool(false, 2, 1, 0, 0);
+                        break;
+                    case "tools_7":
+                        //Obsidian Pickaxe
+                        RemoveTile(tilePosition);
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        BaseTool(false, 0, 0, 0, 0);
+                        break;
+                    case "tools_8":
+                        //Magic Pickaxe
+                        BaseTool(false, 0, 0, 15, 15);
+                        break;
+                    case "tools_4":
+                        //Steel Pickaxe
+                        BaseTool(false, 3, 2, 0, 0);
+                        break;
+                    case "tools_6":
+                        //Diamond Pickaxe
+                        RemoveTile(tilePosition);
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
+                        RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
+                        BaseTool(false, 0, 0, 0, 0);
+                        break;
+                }
+            }
+        }
         if (clicks >= max)//end game
         {
             foreach (var Gem in gemArray)
@@ -203,122 +318,12 @@ public class Test_GameManager : MonoBehaviour
                     }
                 }
             }
-
+            
             player.SetActive(true);
             overworld.SetActive(true);
-            blockade.SetActive(true);
+            //blockade.SetActive(true);
             SceneManager.LoadScene(1);
-        }
-    }
-
-    public void OnMouseDown()
-    {
-        string toolSpriteName = selector.GetComponent<Selector>().GetItemName();
-        Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
-        switch (toolSpriteName)
-        {
-            case "tools_9":
-                //Wood Hammer
-                BaseTool(true, 2, 0, 15, 5);
-                break;
-            case "tools_11":
-                //Copper Hammer
-                BaseTool(true, 3, 0, 10, 0);
-                break;
-            case "tools_14":
-                //Bone Hammer
-                RemoveTile(tilePosition);
-                BaseTool(true, 2, 0, 10, 0);
-                break;
-            case "tools_12":
-                //Gold Hammer
-                BaseTool(true, 2, 0, 30, 20);
-                break;
-            case "tools_10":
-                //Iron Hammer
-                BaseTool(true, 4, 3, 10, 0);
-                break;
-            case "tools_16":
-                //Obsidian Hammer
-                RemoveTile(tilePosition);
-                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                BaseTool(true, 2, 0, 10, 0);
-                break;
-            case "tools_17":
-                //Magic Hammer
-                BaseTool(true, 2, 0, 45, 35);
-                break;
-            case "tools_13":
-                //Steel Hammer
-                BaseTool(true, 5, 6, 10, 0);
-                break;
-            case "tools_15":
-                //Diamond Hammer
-                RemoveTile(tilePosition);
-                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                BaseTool(true, 2, 0, 10, 0);
-                break;
-            case "tools_0":
-                //Wood Pickaxe
-                BaseTool(false, 0, 0, 5, 5);
-                break;
-            case "tools_2":
-                //Copper Pickaxe
-                BaseTool(false, 1, 0, 0, 0);
-                break;
-            case "tools_5":
-                //Bone Pickaxe
-                BaseTool(false, 0, 0, 0, 0);
-                BaseTool(false, 0, 0, 0, 0);
-                break;
-            case "tools_3":
-                //Gold Pickaxe
-                BaseTool(false, 0, 0, 10, 10);
-                break;
-            case "tools_1":
-                //Iron Pickaxe
-                BaseTool(false, 2, 1, 0, 0);
-                break;
-            case "tools_7":
-                //Obsidian Pickaxe
-                RemoveTile(tilePosition);
-                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                BaseTool(false, 0, 0, 0, 0);
-                break;
-            case "tools_8":
-                //Magic Pickaxe
-                BaseTool(false, 0, 0, 15, 15);
-                break;
-            case "tools_4":
-                //Steel Pickaxe
-                BaseTool(false, 3, 2, 0, 0);
-                break;
-            case "tools_6":
-                //Diamond Pickaxe
-                RemoveTile(tilePosition);
-                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                RemoveTile(tilePosition + new Vector3Int(1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(-1, 0, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, 1, 0));
-                RemoveTile(tilePosition + new Vector3Int(0, -1, 0));
-                BaseTool(false, 0, 0, 0, 0);
-                break;
+            //LoadingScreenManager.instance.LoadLevel(1);
         }
     }
 

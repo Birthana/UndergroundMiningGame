@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MiningEvent : MonoBehaviour
 {
-    public Sprite wall;
+    public Tilemap wallLayer;
 
     public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
@@ -23,9 +23,11 @@ public class MiningEvent : MonoBehaviour
                 {
                     //
                     //Debug.Log("Mining Game Start");
-                    SceneManager.LoadScene(3);
+                    SceneManager.LoadScene(2);
+                    //LoadingScreenManager.instance.LoadLevel(3);
+                    Tile tempTile = (Tile)wallLayer.GetTile(tilePosition);
                     Tile wallTile = ScriptableObject.CreateInstance<Tile>();
-                    wallTile.sprite = wall;
+                    wallTile.sprite = tempTile.sprite;
                     tilemap.SetTile(tilePosition, wallTile);
                 }
             }

@@ -14,7 +14,7 @@ public class MiningWallHealthBar : MonoBehaviour
     void Start()
     {
         healthBar = this.transform.GetChild(0).gameObject;
-        fullHealth = healthBar.GetComponent<RectTransform>().anchoredPosition.x;
+        //fullHealth = healthBar.GetComponent<RectTransform>().anchoredPosition.x;
         y = healthBar.GetComponent<RectTransform>().anchoredPosition.y;
     }
 
@@ -22,7 +22,6 @@ public class MiningWallHealthBar : MonoBehaviour
     {
         percentage = currentHealth / maxHealth;
         healthBar.GetComponent<RectTransform>().localScale = new Vector3(percentage, 1.0f, 1.0f);
-        Vector3 scaledPosition = new Vector3(fullHealth * percentage, y, 0.0f);
-        healthBar.GetComponent<RectTransform>().anchoredPosition = scaledPosition;
+        healthBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
     }
 }

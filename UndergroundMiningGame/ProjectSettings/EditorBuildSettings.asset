@@ -11,10 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Overworld_Duplicate.unity
     guid: 10e74347e1a25df46a9e54b953336e18
-  - enabled: 1
-    path: Assets/Scenes/MiningGame.unity
-    guid: 06d3be762bdb10d4baf311e52104ab83
+  - enabled: 0
+    path: Assets/Scenes/OW_General.unity
+    guid: 9fb1808f340115a4f9708d3c3e7adabf
   - enabled: 1
     path: Assets/Scenes/Test_MiningGame.unity
     guid: a2e008c14ab99cd479a5c0036a03213d
+  - enabled: 1
+    path: Assets/Scenes/Boss_MiningGame.unity
+    guid: 4f3fe686e9096b542b264175bf3d23d5
   m_configObjects: {}

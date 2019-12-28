@@ -48,7 +48,7 @@ public class RandomMiningEvent : MonoBehaviour
             Vector3Int tilePosition = new Vector3Int(position.x, position.y, position.z);
             if (tilemap.HasTile(tilePosition))
             {
-                int rngInt = Random.Range(0, 10);
+                int rngInt = Random.Range(0, 5);
                 if (rngInt == 0)
                 {
                     Tile newTile = ScriptableObject.CreateInstance<Tile>();

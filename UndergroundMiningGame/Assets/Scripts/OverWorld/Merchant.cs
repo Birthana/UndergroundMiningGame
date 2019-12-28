@@ -6,7 +6,7 @@ using TMPro;
 
 public class Merchant : MonoBehaviour
 {
-    public string name;
+    //public string name;
     public Item itemToSell;
     public int moneyAmount;
     public bool buy;

@@ -52,6 +52,7 @@ public class Inventory : MonoBehaviour
                 }
             }
             AddItem(basicHammer);
+            PlayerManager.instance.currentHammerToolSprite = basicHammer.image;
             AddItem(basicPick);
             GameObject moneyUI = GameObject.FindGameObjectWithTag("Money");
             moneyAnim = moneyUI.GetComponent<Animator>();
@@ -79,7 +80,31 @@ public class Inventory : MonoBehaviour
                 inventoryAnim.SetBool("IsOpen", true);
                 moneyAnim.SetBool("IsOpen", true);
             }
-        }    
+        }
+        float sw = Input.GetAxis("Mouse ScrollWheel");
+        GameObject selector = GameObject.FindGameObjectWithTag("Selector");
+        if (sw > 0f)
+        {
+            if (selector.GetComponent<Selector>().currentPosition == 0)
+            {
+                selector.GetComponent<Selector>().SetPosition(17);
+            }
+            else
+            {
+                selector.GetComponent<Selector>().SetPosition(selector.GetComponent<Selector>().currentPosition - 1);
+            }
+        }
+        else if(sw < 0f)
+        {
+            if (selector.GetComponent<Selector>().currentPosition == 17)
+            {
+                selector.GetComponent<Selector>().SetPosition(0);
+            }
+            else
+            {
+                selector.GetComponent<Selector>().SetPosition(selector.GetComponent<Selector>().currentPosition + 1);
+            }
+        }
     }
 
     public void AddItem(Item item)
@@ -168,5 +193,19 @@ public class Inventory : MonoBehaviour
 
         }
         DisplayInventory();
+    }
+
+    public Item GetItemFromSpriteName(string spriteName)
+    {
+        Item[] inventoryArray = inventory.ToArray();
+        Item itemFromSprite = inventoryArray[0];
+        foreach (Item tempItem in inventoryArray)
+        {
+            if (tempItem.image.name.Equals(spriteName))
+            {
+                itemFromSprite = tempItem;
+            }
+        }
+        return itemFromSprite;
     }
 }
