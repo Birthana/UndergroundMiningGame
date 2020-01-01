@@ -30,6 +30,7 @@ public class Test_GameManager : MonoBehaviour
     //public GameObject blockade;
     public AudioSource hammerSound;
     public AudioSource pickSound;
+    public AudioClip backgroundMusic;
     void Start()
     {
         cam = Camera.main;
@@ -41,6 +42,7 @@ public class Test_GameManager : MonoBehaviour
         overworld.SetActive(false);
         //blockade = GameObject.FindGameObjectWithTag("Blockade");
         //blockade.SetActive(false);
+        SoundManager.instance.PlayBackground(backgroundMusic);
     }
 
     public Gem[] GenerateGems()
@@ -322,6 +324,7 @@ public class Test_GameManager : MonoBehaviour
             player.SetActive(true);
             overworld.SetActive(true);
             //blockade.SetActive(true);
+            SoundManager.instance.backgroundPlayer.Stop();
             SceneManager.LoadScene(1);
             //LoadingScreenManager.instance.LoadLevel(1);
         }
@@ -420,13 +423,13 @@ public class Test_GameManager : MonoBehaviour
         {
             clicks += 3;
             clickCountRatio.text = (max - clicks) + " / " + max;
-            healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max);
+            healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max, false);
         }
         else
         {
             clicks += 1;
             clickCountRatio.text = (max - clicks) + " / " + max;
-            healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max);
+            healthBar.GetComponent<MiningWallHealthBar>().SetPercentage(max - clicks, max, false);
         }
         
     }

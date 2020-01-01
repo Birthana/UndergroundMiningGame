@@ -18,10 +18,14 @@ public class MiningWallHealthBar : MonoBehaviour
         y = healthBar.GetComponent<RectTransform>().anchoredPosition.y;
     }
 
-    public void SetPercentage(float currentHealth, float maxHealth)
+    public void SetPercentage(float currentHealth, float maxHealth, bool playSound)
     {
         percentage = currentHealth / maxHealth;
         healthBar.GetComponent<RectTransform>().localScale = new Vector3(percentage, 1.0f, 1.0f);
         healthBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+        if (playSound)
+        {
+            SoundManager.instance.PlaySound(3);
+        }
     }
 }

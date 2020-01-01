@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
     public int sceneNumber;
     public int maxHealth;
     public Sprite currentHammerToolSprite;
+    public Boss bossToFight;
 
     // Start is called before the first frame update
     void Awake()

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ZoneManager : MonoBehaviour
 {
     public static ZoneManager instance = null;
-    public int count;
 
     // Start is called before the first frame update
     void Start()
@@ -13,7 +12,6 @@ public class ZoneManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            count = 1;
         }
         else
         {
@@ -22,10 +20,9 @@ public class ZoneManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void UnlockZone()
+    public void UnlockZone(int index)
     {
-        Destroy(GameObject.Find("Blockade" + count));
-        count++;
+        Destroy(GameObject.Find("Blockade" + index));
     }
 
 

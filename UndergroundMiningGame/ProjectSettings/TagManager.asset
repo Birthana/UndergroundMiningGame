@@ -21,6 +21,9 @@ TagManager:
   - Floor
   - PlayerSounds
   - ZoneManager
+  - DamageModifier
+  - DamageShield
+  - Damage
   layers:
   - Default
   - TransparentFX

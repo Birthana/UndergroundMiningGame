@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CraftingMenu : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CraftingMenu : MonoBehaviour
     public GameObject selectedToolButton;
     public GameObject selectedGemButton;
     public GameObject selector;
+    public TextMeshProUGUI craftingRatio;
     public float nextToolCount;
     public int upgradeDifficulty;
 
@@ -59,6 +61,7 @@ public class CraftingMenu : MonoBehaviour
                 nextUpgradeTool.SetActive(true);
                 nextUpgradeTool.GetComponent<Image>().sprite = toolSprites[selectedToolSprite + 1];
                 smithingBar.GetComponent<RectTransform>().localScale = new Vector3(1, 0, 0);
+                craftingRatio.text = nextToolCount + "/" + (25 + ((upgradeDifficulty / 2) * 25));
             }
         }
     }
@@ -81,10 +84,23 @@ public class CraftingMenu : MonoBehaviour
         if (CheckToolName(selector.GetComponent<Selector>().GetItemName()) >= toolSprites.Length)
         {
             float total = (25 + ((upgradeDifficulty/2) * 25));
+            
+            GemItem tempGemItem = (GemItem)Inventory.instance.GetItemFromSpriteName(selector.GetComponent<Selector>().GetItemName());
+            if (tempGemItem.grade.Equals(GemItem.GemGrade.smallBasic)) 
+            {
+                nextToolCount += (tempGemItem.count * 1);
+            }
+            else if (tempGemItem.grade.Equals(GemItem.GemGrade.mediumBasic))
+            {
+                nextToolCount += (tempGemItem.count * 4);
+            }
+            else if (tempGemItem.grade.Equals(GemItem.GemGrade.largeBasic))
+            {
+                nextToolCount += (tempGemItem.count * 9);
+            }
             smithingBar.GetComponent<RectTransform>().localScale = new Vector3(1, nextToolCount / total, 0);
             smithingBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
-            GemItem tempGemItem = (GemItem)Inventory.instance.GetItemFromSpriteName(selector.GetComponent<Selector>().GetItemName());
-            nextToolCount += tempGemItem.count;
+            craftingRatio.text = nextToolCount + "/" + total;
             tempGemItem.count = 0;
             Inventory.instance.inventory.Remove(tempGemItem);
             Inventory.instance.DisplayInventory();
@@ -103,6 +119,9 @@ public class CraftingMenu : MonoBehaviour
                     PlayerManager.instance.currentHammerToolSprite = nextUpgradeTool.GetComponent<Image>().sprite;
                 }
                 //Inventory.instance.AddItem(GetItemFromSpriteName(nextUpgradeTool.GetComponent<Image>().sprite.name));
+                smithingBar.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 0);
+                smithingBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+                craftingRatio.text = "";
                 selectedTool.SetActive(false);
                 nextUpgradeTool.SetActive(false);
                 selectedToolButton.SetActive(true);

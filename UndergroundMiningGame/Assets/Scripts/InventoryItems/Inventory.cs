@@ -17,6 +17,7 @@ public class Inventory : MonoBehaviour
     public TextMeshProUGUI moneyAmount;
     public int page;
     public Sprite background;
+    public GameObject selectedInventoryItem;
 
     // Start is called before the first frame update
     void Awake()
@@ -57,6 +58,7 @@ public class Inventory : MonoBehaviour
             GameObject moneyUI = GameObject.FindGameObjectWithTag("Money");
             moneyAnim = moneyUI.GetComponent<Animator>();
             moneyAmount = moneyUI.GetComponentInChildren<TextMeshProUGUI>();
+            selectedInventoryItem.SetActive(false);
         }
         else
         {
@@ -104,6 +106,25 @@ public class Inventory : MonoBehaviour
             {
                 selector.GetComponent<Selector>().SetPosition(selector.GetComponent<Selector>().currentPosition + 1);
             }
+        }
+
+        if (!inventoryAnim.GetBool("IsOpen"))
+        {
+            string itemName = selector.GetComponent<Selector>().GetItemName();
+            if (itemName != null)
+            {
+                selectedInventoryItem.SetActive(true);
+                selectedInventoryItem.GetComponent<Image>().sprite = GetItemFromSpriteName(itemName).image;
+                selectedInventoryItem.transform.position = Input.mousePosition + new Vector3(-50.0f, 50.0f, 0);
+            }
+            else
+            {
+                selectedInventoryItem.SetActive(false);
+            }
+        }
+        else
+        {
+            selectedInventoryItem.SetActive(false);
         }
     }
 

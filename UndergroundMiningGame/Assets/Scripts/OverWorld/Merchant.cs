@@ -69,7 +69,7 @@ public class Merchant : MonoBehaviour
     {
         if (int.Parse(Inventory.instance.moneyAmount.text) >= moneyAmount)
         {
-            ZoneManager.instance.UnlockZone();
+            ZoneManager.instance.UnlockZone(1);
             Inventory.instance.moneyAmount.text = (int.Parse(Inventory.instance.moneyAmount.text) - moneyAmount).ToString();
             DialogueSystem.instance.yesnoButtons.SetActive(false);
             DialogueSystem.instance.StartDialogue(dialoguePass);

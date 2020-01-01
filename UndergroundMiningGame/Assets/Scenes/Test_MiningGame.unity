@@ -5465,6 +5465,7 @@ MonoBehaviour:
   overworld: {fileID: 0}
   hammerSound: {fileID: 1399734886}
   pickSound: {fileID: 1074811040}
+  backgroundMusic: {fileID: 8300000, guid: 0501a07ad5a7a0c45805a322f9aeeda6, type: 3}
 --- !u!61 &2007470095
 BoxCollider2D:
   m_ObjectHideFlags: 0

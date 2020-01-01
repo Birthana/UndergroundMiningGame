@@ -17,7 +17,12 @@ public class Selector : MonoBehaviour
 
     public string GetItemName()
     {
+        string result = null;
         Sprite item = this.transform.parent.GetChild(1).gameObject.GetComponent<Image>().sprite;
-        return item.name;
+        if(item != null)
+        {
+            result = item.name;
+        }
+        return result;
     }
 }

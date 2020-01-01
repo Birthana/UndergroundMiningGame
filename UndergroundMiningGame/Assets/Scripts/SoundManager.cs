@@ -34,4 +34,10 @@ public class SoundManager : MonoBehaviour
         soundPlayer.clip = sounds[index];
         soundPlayer.Play();
     }
+
+    public void PlaySoundAt(int index, float position)
+    {
+        soundPlayer.clip = sounds[index];
+        soundPlayer.PlayScheduled(position);
+    }
 }
