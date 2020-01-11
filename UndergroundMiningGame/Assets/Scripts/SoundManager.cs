@@ -23,9 +23,16 @@ public class SoundManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void PlayBackground(AudioClip backgroundMusic)
+    public void PlayBackground(AudioClip backgroundMusic, bool looping)
     {
+        backgroundPlayer.loop = looping;
         backgroundPlayer.clip = backgroundMusic;
+        backgroundPlayer.Play();
+    }
+    public void PlayInBackground(int index)
+    {
+        backgroundPlayer.loop = false;
+        backgroundPlayer.clip = sounds[index];
         backgroundPlayer.Play();
     }
 

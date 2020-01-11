@@ -31,6 +31,7 @@ public class Test_GameManager : MonoBehaviour
     public AudioSource hammerSound;
     public AudioSource pickSound;
     public AudioClip backgroundMusic;
+    public bool gameEnd;
     void Start()
     {
         cam = Camera.main;
@@ -42,14 +43,15 @@ public class Test_GameManager : MonoBehaviour
         overworld.SetActive(false);
         //blockade = GameObject.FindGameObjectWithTag("Blockade");
         //blockade.SetActive(false);
-        SoundManager.instance.PlayBackground(backgroundMusic);
+        SoundManager.instance.PlayBackground(backgroundMusic, true);
+        gameEnd = false;
     }
 
     public Gem[] GenerateGems()
     {
         //int x = 16;
         //int y = 8;
-        Gem[] spawnGems = new Gem[Random.Range(8, 16)];
+        Gem[] spawnGems = new Gem[Random.Range(15, 21)];
         for (int i = 0; i < spawnGems.Length; i++)
         {
             bool creatingGem = true;
@@ -58,6 +60,10 @@ public class Test_GameManager : MonoBehaviour
                 Vector3Int rngPosition = new Vector3Int(Random.Range(0, x), Random.Range(0, y), 0);
                 Tile rngTile = (Tile) gemMap.GetTile(rngPosition);
                 int size = Random.Range(0, 10);
+                if (i == 0)
+                {
+                    size = Random.Range(0, 2) + 8;
+                }
                 if (size == 0 || size == 1 || size == 2 || size == 3 || size == 4 || size == 5 || size == 6)
                 {
                     if (rngTile == null)
@@ -154,7 +160,7 @@ public class Test_GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !gameEnd)
         {
             string toolSpriteName = selector.GetComponent<Selector>().GetItemName();
             Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
@@ -267,7 +273,7 @@ public class Test_GameManager : MonoBehaviour
                 }
             }
         }
-        if (clicks >= max)//end game
+        if (clicks >= max && !gameEnd)//end game
         {
             foreach (var Gem in gemArray)
             {
@@ -277,6 +283,7 @@ public class Test_GameManager : MonoBehaviour
                     {
                         //Tile smallGem = (Tile) gemMap.GetTile(Gem.getPosition());
                         Inventory.instance.AddItem(smallGemItems[Gem.getGemPosition()]);
+                        MinedGemsUI.instance.AddMinedItem(smallGemItems[Gem.getGemPosition()]);
                     }
                 }
                 else if (Gem.getSize() == 2)
@@ -292,6 +299,7 @@ public class Test_GameManager : MonoBehaviour
                         ))
                     {
                         Inventory.instance.AddItem(mediumGemItems[Gem.getGemPosition()]);
+                        MinedGemsUI.instance.AddMinedItem(mediumGemItems[Gem.getGemPosition()]);
                     }
                 }
                 else if (Gem.getSize() == 3)
@@ -317,6 +325,7 @@ public class Test_GameManager : MonoBehaviour
                         ))
                     {
                         Inventory.instance.AddItem(largeGemItems[Gem.getGemPosition()]);
+                        MinedGemsUI.instance.AddMinedItem(largeGemItems[Gem.getGemPosition()]);
                     }
                 }
             }
@@ -324,10 +333,19 @@ public class Test_GameManager : MonoBehaviour
             player.SetActive(true);
             overworld.SetActive(true);
             //blockade.SetActive(true);
-            SoundManager.instance.backgroundPlayer.Stop();
-            SceneManager.LoadScene(1);
+            StartCoroutine(EndMiningGame());
+            
             //LoadingScreenManager.instance.LoadLevel(1);
         }
+    }
+
+    IEnumerator EndMiningGame()
+    {
+        gameEnd = true;
+        MinedGemsUI.instance.Display();
+        SoundManager.instance.backgroundPlayer.Stop();
+        yield return new WaitForSeconds(3.0f);
+        SceneManager.LoadScene(1);
     }
 
     public void BaseTool(bool isHammer, int surroundingAreaA, int surroundingAreaB, int innerPercentage, int outerPercentage)

@@ -108,15 +108,21 @@ public class CraftingMenu : MonoBehaviour
             {
                 nextToolCount = 0;
                 upgradeDifficulty++;
-                Inventory.instance.inventory.Remove(Inventory.instance.GetItemFromSpriteName(selectedTool.GetComponent<Image>().sprite.name));
-                Inventory.instance.inventory.Insert(0, GetItemFromSpriteName(nextUpgradeTool.GetComponent<Image>().sprite.name));
-                Inventory.instance.DisplayInventory();
                 string temp = nextUpgradeTool.GetComponent<Image>().sprite.name;
                 if (temp.Equals("tools_9") || temp.Equals("tools_10") || temp.Equals("tools_11") ||
                     temp.Equals("tools_12") || temp.Equals("tools_13") || temp.Equals("tools_14") ||
                     temp.Equals("tools_15") || temp.Equals("tools_16") || temp.Equals("tools_17"))
                 {
                     PlayerManager.instance.currentHammerToolSprite = nextUpgradeTool.GetComponent<Image>().sprite;
+                    Inventory.instance.inventory.Remove(Inventory.instance.GetItemFromSpriteName(selectedTool.GetComponent<Image>().sprite.name));
+                    Inventory.instance.inventory.Insert(0, GetItemFromSpriteName(nextUpgradeTool.GetComponent<Image>().sprite.name));
+                    Inventory.instance.DisplayInventory();
+                }
+                else
+                {
+                    Inventory.instance.inventory.Remove(Inventory.instance.GetItemFromSpriteName(selectedTool.GetComponent<Image>().sprite.name));
+                    Inventory.instance.inventory.Insert(1, GetItemFromSpriteName(nextUpgradeTool.GetComponent<Image>().sprite.name));
+                    Inventory.instance.DisplayInventory();
                 }
                 //Inventory.instance.AddItem(GetItemFromSpriteName(nextUpgradeTool.GetComponent<Image>().sprite.name));
                 smithingBar.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 0);

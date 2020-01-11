@@ -14,8 +14,8 @@ public class BossMiningEvent : MonoBehaviour
 
     private void Start()
     {
-        dialogueFail = new Dialogue(bossName, new[] { "Not enough money." });
-        dialogueNo = new Dialogue(bossName, new[] { "Blockade still stands." });
+        dialogueFail = new Dialogue(bossName, new[] { "You place the money on it. Nothing happens. You grab back the money you place." });
+        dialogueNo = new Dialogue(bossName, new[] { "The statue still stands." });
         dialogue = new Dialogue(bossName, new[] { "A statue stands in the way. Place $" + moneyAmount + " on it?" });
     }
 

@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
     public int page;
     public Sprite background;
     public GameObject selectedInventoryItem;
+    public Item[] items;
 
     // Start is called before the first frame update
     void Awake()
@@ -55,6 +56,10 @@ public class Inventory : MonoBehaviour
             AddItem(basicHammer);
             PlayerManager.instance.currentHammerToolSprite = basicHammer.image;
             AddItem(basicPick);
+            for (int i = 0; i < items.Length; i++)
+            {
+                AddItem(items[i]);
+            }
             GameObject moneyUI = GameObject.FindGameObjectWithTag("Money");
             moneyAnim = moneyUI.GetComponent<Animator>();
             moneyAmount = moneyUI.GetComponentInChildren<TextMeshProUGUI>();

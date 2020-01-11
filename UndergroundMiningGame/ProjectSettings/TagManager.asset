@@ -24,6 +24,7 @@ TagManager:
   - DamageModifier
   - DamageShield
   - Damage
+  - Minion
   layers:
   - Default
   - TransparentFX
