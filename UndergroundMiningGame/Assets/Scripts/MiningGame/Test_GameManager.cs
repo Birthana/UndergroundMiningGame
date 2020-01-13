@@ -330,8 +330,7 @@ public class Test_GameManager : MonoBehaviour
                 }
             }
             
-            player.SetActive(true);
-            overworld.SetActive(true);
+            
             //blockade.SetActive(true);
             StartCoroutine(EndMiningGame());
             
@@ -345,6 +344,8 @@ public class Test_GameManager : MonoBehaviour
         MinedGemsUI.instance.Display();
         SoundManager.instance.backgroundPlayer.Stop();
         yield return new WaitForSeconds(3.0f);
+        player.SetActive(true);
+        overworld.SetActive(true);
         SceneManager.LoadScene(1);
     }
 

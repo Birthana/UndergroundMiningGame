@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\MiningGame\Boss_GameManager.cs" />
     <Compile Include="Assets\Scripts\MiningGame\Damage.cs" />
     <Compile Include="Assets\Scripts\MiningGame\DamageShield.cs" />
+    <Compile Include="Assets\Scripts\MiningGame\HazardsTooltipManager.cs" />
     <Compile Include="Assets\Scripts\MiningGame\MinedGemsUI.cs" />
     <Compile Include="Assets\Scripts\MiningGame\MiningWallHealthBar.cs" />
     <Compile Include="Assets\Scripts\MiningGame\Test_GameManager.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\Scripts\OverWorld\Dialogue.cs" />
     <Compile Include="Assets\Scripts\OverWorld\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\OverWorld\DialogueSystem.cs" />
+    <Compile Include="Assets\Scripts\OverWorld\InteractTooltipManager.cs" />
     <Compile Include="Assets\Scripts\OverWorld\MainCamera.cs" />
     <Compile Include="Assets\Scripts\OverWorld\Merchant.cs" />
     <Compile Include="Assets\Scripts\OverWorld\MiningEvent.cs" />

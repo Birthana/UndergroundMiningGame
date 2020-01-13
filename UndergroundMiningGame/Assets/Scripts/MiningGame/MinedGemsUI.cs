@@ -10,7 +10,7 @@ public class MinedGemsUI : MonoBehaviour
     public GameObject minedGemsPanel;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -45,7 +45,7 @@ public class MinedGemsUI : MonoBehaviour
             SoundManager.instance.PlaySound(12);
             yield return new WaitForSeconds(0.2f);
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         minedGemsPanel.SetActive(false);
         for (int i = 0; i < minedGemsPanel.transform.GetChild(0).childCount; i++)
         {

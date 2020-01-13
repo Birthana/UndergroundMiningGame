@@ -25,6 +25,8 @@ TagManager:
   - DamageShield
   - Damage
   - Minion
+  - HazardTooltipUI
+  - HazardTooltipManager
   layers:
   - Default
   - TransparentFX

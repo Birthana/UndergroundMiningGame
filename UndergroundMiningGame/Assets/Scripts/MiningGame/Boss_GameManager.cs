@@ -41,6 +41,7 @@ public class Boss_GameManager : MonoBehaviour
     public Sprite[] minionSprites;
     public int minionCount;
     public int maxHazardCount;
+    public bool gameEnding;
 
     public int x;
     public int y;
@@ -217,6 +218,11 @@ public class Boss_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameEnding)
+        {
+            CheckHazardsTooltip();
+        }
+
         if (Input.GetMouseButtonDown(0) && (max - clicks) > 0 && !isAttacking)
         {
             Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
@@ -342,6 +348,56 @@ public class Boss_GameManager : MonoBehaviour
                 }
             }
             Attacks();
+        }
+    }
+
+    public void CheckHazardsTooltip()
+    {
+        Vector3Int tilePosition = ScreenToTilePosition(Input.mousePosition);
+        if (hazards.HasTile(tilePosition))
+        {
+            Tile hazardTile = (Tile)hazards.GetTile(tilePosition);
+            Sprite hoveringHazardSprite = hazardTile.sprite;
+            if (hoveringHazardSprite.Equals(hazardSprite[0]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Cannot be mined.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[1]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Deals 5HP to mine.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[2]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Deals 5HP to mine.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[3]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Extra tile to mine.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[4]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Deals 5HP to mine.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[5]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Extra tile to mine.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[6]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Cannot be mined.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[7]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Tile that moves when mined.");
+            }
+            else if (hoveringHazardSprite.Equals(hazardSprite[8]))
+            {
+                HazardsTooltipManager.instance.Appear(hazards.CellToWorld(tilePosition), hoveringHazardSprite, "Extra tile to mine.");
+            }
+        }
+        else
+        {
+            HazardsTooltipManager.instance.Disappear();
         }
     }
 
@@ -761,11 +817,12 @@ public class Boss_GameManager : MonoBehaviour
 
     IEnumerator EndBossFight(bool gameWin, int numberOfBlockade)
     {
-        player.SetActive(true);
-        overworld.SetActive(true);
+        gameEnding = true;
+        HazardsTooltipManager.instance = null;
+        Destroy(GameObject.FindGameObjectWithTag("HazardTooltipManager"));
         SoundManager.instance.backgroundPlayer.Stop();
         MinedGemsUI.instance.Display();
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(((0.2f * MinedGemsUI.instance.itemsMined.Count) + 1.3f));
         if (gameWin)
         {
             ZoneManager.instance.UnlockZone(numberOfBlockade);
@@ -780,6 +837,8 @@ public class Boss_GameManager : MonoBehaviour
         {
             Inventory.instance.AddItem(temp);
         }
+        player.SetActive(true);
+        overworld.SetActive(true);
         SceneManager.LoadScene(1);
     }
 

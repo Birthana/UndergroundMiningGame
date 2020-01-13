@@ -11,6 +11,7 @@ public class BossMiningEvent : MonoBehaviour
     private Dialogue dialogueFail;
     private Dialogue dialogueNo;
     private Dialogue dialogue;
+    public bool enterBossFight;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class BossMiningEvent : MonoBehaviour
 
     IEnumerator EnterBossMiningEvent()
     {
+        enterBossFight = true;
         DialogueSystem.instance.yesnoButtons.SetActive(false);
         DialogueSystem.instance.EndDialogue();
         PlayerManager.instance.bossToFight = bossInfo;
@@ -41,6 +43,7 @@ public class BossMiningEvent : MonoBehaviour
         Inventory.instance.moneyAmount.text = (int.Parse(Inventory.instance.moneyAmount.text) - moneyAmount).ToString();
         PlayerManager.instance.maxHealth = moneyAmount;
         SceneManager.LoadScene(3);
+        enterBossFight = false;
     }
 
     public void No()
@@ -51,8 +54,13 @@ public class BossMiningEvent : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collision)
     {
+        if (!DialogueSystem.instance.isOpen && !enterBossFight)
+        {
+            InteractTooltipManager.instance.Appear(this.gameObject.transform.position);
+        }
         if (collision.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
+            InteractTooltipManager.instance.Disappear();
             if (!DialogueSystem.instance.isOpen)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
@@ -67,5 +75,10 @@ public class BossMiningEvent : MonoBehaviour
                 DialogueSystem.instance.DisplayNextSentence();
             }
         }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        InteractTooltipManager.instance.Disappear();
     }
 }

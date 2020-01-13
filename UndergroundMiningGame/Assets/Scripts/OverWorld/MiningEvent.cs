@@ -10,21 +10,40 @@ public class MiningEvent : MonoBehaviour
 
     public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
+        Tilemap tilemap = GetComponent<Tilemap>();
+        Vector3 temp = new Vector3(collision.transform.position.x, collision.transform.position.y + 1, collision.transform.position.z);
+        Vector3Int tilePosition = tilemap.WorldToCell(temp);
+        Tile tile = (Tile)tilemap.GetTile(tilePosition);
+        if (tilemap.HasTile(tilePosition))
         {
-            Tilemap tilemap = GetComponent<Tilemap>();
-            Vector3 temp = new Vector3(collision.transform.position.x, collision.transform.position.y + 1, collision.transform.position.z);
-            Vector3Int tilePosition = tilemap.WorldToCell(temp);
-            Tile tile = (Tile) tilemap.GetTile(tilePosition);
-            //if (tile.sprite.Equals(wall))
             if (tile.sprite != null)
             {
                 if (tile.sprite.Equals(GetComponent<RandomMiningEvent>().placeholders))
                 {
-                    //
-                    //Debug.Log("Mining Game Start");
+                    InteractTooltipManager.instance.Appear(collision.gameObject.transform.position + new Vector3(0, 1.0f, 0));
+                }
+                else
+                {
+                    InteractTooltipManager.instance.Disappear();
+                }
+            }
+            else
+            {
+                InteractTooltipManager.instance.Disappear();
+            }
+        }
+        else
+        {
+            InteractTooltipManager.instance.Disappear();
+        }
+        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
+        {
+            InteractTooltipManager.instance.Disappear();
+            if (tile.sprite != null)
+            {
+                if (tile.sprite.Equals(GetComponent<RandomMiningEvent>().placeholders))
+                {
                     SceneManager.LoadScene(2);
-                    //LoadingScreenManager.instance.LoadLevel(3);
                     Tile tempTile = (Tile)wallLayer.GetTile(tilePosition);
                     Tile wallTile = ScriptableObject.CreateInstance<Tile>();
                     wallTile.sprite = tempTile.sprite;
@@ -33,5 +52,10 @@ public class MiningEvent : MonoBehaviour
             }
             
         }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        InteractTooltipManager.instance.Disappear();
     }
 }

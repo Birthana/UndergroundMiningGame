@@ -83,8 +83,13 @@ public class Merchant : MonoBehaviour
 
     public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
+        if (!DialogueSystem.instance.isOpen)
+        {
+            InteractTooltipManager.instance.Appear(this.gameObject.transform.position);
+        }
         if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
         {
+            InteractTooltipManager.instance.Disappear();
             if (!DialogueSystem.instance.isOpen)
             {
                 collision.gameObject.GetComponent<PlayerMovement>().enabled = false;
@@ -115,5 +120,10 @@ public class Merchant : MonoBehaviour
                 DialogueSystem.instance.DisplayNextSentence();
             }
         }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        InteractTooltipManager.instance.Disappear();
     }
 }
