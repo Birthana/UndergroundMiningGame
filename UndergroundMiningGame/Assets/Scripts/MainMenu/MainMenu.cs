@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -24,8 +25,16 @@ public class MainMenu : MonoBehaviour
 
     public void Play()
     {
-        LoadingScreenManager.instance.LoadLevel(1);
+        StartCoroutine(OpenTransition());
     }
+
+    IEnumerator OpenTransition()
+    {
+        TransitionsManager.instance.Open();
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene(1);
+    }
+
     public void Credits()
     {
         playButton.SetBool("IsOpen", false);

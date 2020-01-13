@@ -36,9 +36,11 @@ public class HazardsTooltipManager : MonoBehaviour
             tooltipPanel.transform.position = hazardPosition + new Vector3(3.0f, 1.0f, 0);
             tooltipPanel.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = hazardSprite;
             tooltipPanel.GetComponentInChildren<TextMeshProUGUI>().text = tooltipText;
+            tooltipPanel.GetComponent<Animator>().SetBool("IsOpen", true);
         }
         else
         {
+            tooltipPanel.GetComponent<Animator>().SetBool("IsOpen", false);
             tooltipPanel.SetActive(false);
         }
     }

@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\MainMenu\LoadingScreenManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MainMenu.cs" />
     <Compile Include="Assets\Scripts\MainMenu\Title.cs" />
+    <Compile Include="Assets\Scripts\MainMenu\TransitionsManager.cs" />
     <Compile Include="Assets\Scripts\MiningGame\Boss.cs" />
     <Compile Include="Assets\Scripts\MiningGame\Boss_GameManager.cs" />
     <Compile Include="Assets\Scripts\MiningGame\Damage.cs" />

@@ -343,7 +343,9 @@ public class Test_GameManager : MonoBehaviour
         gameEnd = true;
         MinedGemsUI.instance.Display();
         SoundManager.instance.backgroundPlayer.Stop();
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(((0.2f * MinedGemsUI.instance.itemsMined.Count) + 1.2f));
+        TransitionsManager.instance.Open();
+        yield return new WaitForSeconds(1.0f);
         player.SetActive(true);
         overworld.SetActive(true);
         SceneManager.LoadScene(1);

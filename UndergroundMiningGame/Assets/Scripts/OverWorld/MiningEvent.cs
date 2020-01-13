@@ -43,15 +43,22 @@ public class MiningEvent : MonoBehaviour
             {
                 if (tile.sprite.Equals(GetComponent<RandomMiningEvent>().placeholders))
                 {
-                    SceneManager.LoadScene(2);
-                    Tile tempTile = (Tile)wallLayer.GetTile(tilePosition);
-                    Tile wallTile = ScriptableObject.CreateInstance<Tile>();
-                    wallTile.sprite = tempTile.sprite;
-                    tilemap.SetTile(tilePosition, wallTile);
+                    StartCoroutine(EnterMiningGame(tilemap, tilePosition));
                 }
             }
             
         }
+    }
+
+    IEnumerator EnterMiningGame(Tilemap tilemap, Vector3Int tilePosition)
+    {
+        TransitionsManager.instance.Open();
+        yield return new WaitForSeconds(1.0f);
+        SceneManager.LoadScene(2);
+        Tile tempTile = (Tile)wallLayer.GetTile(tilePosition);
+        Tile wallTile = ScriptableObject.CreateInstance<Tile>();
+        wallTile.sprite = tempTile.sprite;
+        tilemap.SetTile(tilePosition, wallTile);
     }
 
     public void OnCollisionExit2D(Collision2D collision)

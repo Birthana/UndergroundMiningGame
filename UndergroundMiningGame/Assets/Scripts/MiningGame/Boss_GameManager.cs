@@ -728,11 +728,11 @@ public class Boss_GameManager : MonoBehaviour
                 currentPlayerHealth += (bossInfo.bossDamage/2);
                 SetAttackName("Protective Bubble Spell");
                 SoundManager.instance.PlaySound(8);
-                enemyAttack[1].SetActive(true);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[1].SetActive(true);
                 enemyAttack[1].GetComponent<Animator>().SetBool("IsOpen", true);
                 yield return new WaitForSeconds(1.0f);
-                attackName.SetActive(false);
                 enemyAttack[1].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[1].SetActive(false);
                 particles[1].Play();
@@ -837,6 +837,9 @@ public class Boss_GameManager : MonoBehaviour
         {
             Inventory.instance.AddItem(temp);
         }
+        yield return new WaitForSeconds(1.0f);
+        TransitionsManager.instance.Open();
+        yield return new WaitForSeconds(1.0f);
         player.SetActive(true);
         overworld.SetActive(true);
         SceneManager.LoadScene(1);
@@ -875,16 +878,16 @@ public class Boss_GameManager : MonoBehaviour
     {
         currentPlayerHealth += bossInfo.bossDamage;
         SetAttackName(currentAttackName);
-        SoundManager.instance.PlaySound(1);
+        SoundManager.instance.PlaySound(1); 
+        yield return new WaitForSeconds(0.5f);
+        attackName.SetActive(false);
         enemyAttack[0].SetActive(true);
         if (index >= 0)
         {
             enemyAttack[0].GetComponent<SpriteRenderer>().sprite = baseAttackSprites[index];
         }
-        yield return new WaitForSeconds(0.5f);
         enemyAttack[0].GetComponent<Animator>().SetBool("IsOpen", true);
         yield return new WaitForSeconds(1.0f);
-        attackName.SetActive(false);
         enemyAttack[0].GetComponent<Animator>().SetBool("IsOpen", false);
         enemyAttack[0].SetActive(false);
         PlayerTakeDamage(PlayerManager.instance.maxHealth - currentPlayerHealth);
@@ -908,7 +911,9 @@ public class Boss_GameManager : MonoBehaviour
             {
                 if (rng == 1 && (bossCurrentHealth > (bossMaxHealth / 2)))
                 {
-                    SetAttackName("Chewing On Rocks");
+                    SetAttackName("Chewing On Rocks"); 
+                    yield return new WaitForSeconds(0.5f);
+                    attackName.SetActive(false);
                     enemyAttack[3].SetActive(true);
                     enemyAttack[3].GetComponent<Animator>().SetBool("IsOpen", true);
                     particles[3].Play();
@@ -925,12 +930,12 @@ public class Boss_GameManager : MonoBehaviour
                 {
                     currentPlayerHealth += (bossInfo.bossDamage / 2);
                     SetAttackName("Explosive Ember Boulders");
-                    enemyAttack[2].SetActive(true);
                     SoundManager.instance.PlaySound(8);
                     yield return new WaitForSeconds(0.5f);
+                    attackName.SetActive(false);
+                    enemyAttack[2].SetActive(true);
                     enemyAttack[2].GetComponent<Animator>().SetBool("IsOpen", true);
                     yield return new WaitForSeconds(1.0f);
-                    attackName.SetActive(false);
                     enemyAttack[2].GetComponent<Animator>().SetBool("IsOpen", false);
                     enemyAttack[2].SetActive(false);
                     particles[2].Play();
@@ -974,14 +979,14 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Calling The Flock");
-                enemyAttack[5].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[5].SetActive(true);
                 enemyAttack[5].GetComponent<Animator>().SetBool("IsOpen", true);
                 yield return new WaitForSeconds(0.3f);
                 SoundManager.instance.PlaySound(7);
                 yield return new WaitForSeconds(1.0f);
-                attackName.SetActive(false);
                 enemyAttack[5].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[5].SetActive(false);
                 SoundManager.instance.PlaySound(10);
@@ -996,12 +1001,12 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Conjure Enchanted Arrows");
-                enemyAttack[4].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[4].SetActive(true);
                 enemyAttack[4].GetComponent<Animator>().SetBool("IsOpen", true);
                 yield return new WaitForSeconds(1.0f);
-                attackName.SetActive(false);
                 enemyAttack[4].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[4].SetActive(false);
                 particles[4].Play();
@@ -1044,14 +1049,14 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Blinding Drone Phazers");
-                enemyAttack[6].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[6].SetActive(true);
                 enemyAttack[6].GetComponent<Animator>().SetBool("IsOpen", true);
                 particles[6].Play();
                 SoundManager.instance.PlaySound(11);
                 yield return new WaitForSeconds(3.0f);
-                attackName.SetActive(false);
                 enemyAttack[6].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[6].SetActive(false);
                 particles[6].Stop();
@@ -1070,12 +1075,12 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Causing An Avalanche");
-                enemyAttack[7].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[7].SetActive(true);
                 enemyAttack[7].GetComponent<Animator>().SetBool("IsOpen", true);
                 yield return new WaitForSeconds(1.0f);
-                attackName.SetActive(false);
                 enemyAttack[7].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[7].SetActive(false);
                 particles[7].Play();
@@ -1120,15 +1125,15 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Heavy Smoke Signal");
-                enemyAttack[8].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[8].SetActive(true);
                 enemyAttack[8].GetComponent<Animator>().SetBool("IsOpen", true);
                 //SoundManager.instance.PlaySound(11);
                 yield return new WaitForSeconds(1.0f);
                 particles[8].Play();
                 yield return new WaitForSeconds(3.0f);
-                attackName.SetActive(false);
                 enemyAttack[8].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[8].SetActive(false);
                 particles[8].Stop();
@@ -1148,12 +1153,12 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Too Much Smoke Raindance");
-                enemyAttack[9].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[9].SetActive(true);
                 enemyAttack[9].GetComponent<Animator>().SetBool("IsOpen", true);
                 yield return new WaitForSeconds(1.0f);
-                attackName.SetActive(false);
                 enemyAttack[9].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[9].SetActive(false);
                 particles[9].Play();
@@ -1197,15 +1202,15 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Tossing Out Dirty Fish Water");
-                enemyAttack[10].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[10].SetActive(true);
                 enemyAttack[10].GetComponent<Animator>().SetBool("IsOpen", true);
                 //SoundManager.instance.PlaySound(11);
                 yield return new WaitForSeconds(1.0f);
                 particles[10].Play();
                 yield return new WaitForSeconds(2.0f);
-                attackName.SetActive(false);
                 enemyAttack[10].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[10].SetActive(false);
                 particles[10].Stop();
@@ -1225,13 +1230,13 @@ public class Boss_GameManager : MonoBehaviour
             {
                 currentPlayerHealth += (bossInfo.bossDamage / 3);
                 SetAttackName("Fireball Phazers");
-                enemyAttack[11].SetActive(true);
                 SoundManager.instance.PlaySound(8);
                 yield return new WaitForSeconds(0.5f);
+                attackName.SetActive(false);
+                enemyAttack[11].SetActive(true);
                 enemyAttack[11].GetComponent<Animator>().SetBool("IsOpen", true);
                 particles[11].Play();
                 yield return new WaitForSeconds(3.0f);
-                attackName.SetActive(false);
                 enemyAttack[11].GetComponent<Animator>().SetBool("IsOpen", false);
                 enemyAttack[11].SetActive(false);
                 particles[11].Stop();
