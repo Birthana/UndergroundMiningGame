@@ -16,6 +16,9 @@ public class CraftingMenu : MonoBehaviour
     public GameObject selectedGemButton;
     public GameObject selector;
     public TextMeshProUGUI craftingRatio;
+
+    public bool isCrafting;
+    public int selectedToolSprite;
     public float nextToolCount;
     public int upgradeDifficulty;
 
@@ -27,8 +30,36 @@ public class CraftingMenu : MonoBehaviour
         selectedTool.SetActive(false);
         nextUpgradeTool.SetActive(false);
         selectedGemButton.SetActive(false);
-        nextToolCount = 0;
-        upgradeDifficulty = 0;
+
+        if (PlayerManager.instance.continuing)
+        {
+            isCrafting = PlayerManager.instance.playerData.isCrafting;
+            selectedToolSprite = PlayerManager.instance.playerData.selectedToolSprite;
+            nextToolCount = PlayerManager.instance.playerData.nextToolCount;
+            upgradeDifficulty = PlayerManager.instance.playerData.upgradeDifficulty;
+            if (isCrafting)
+            {
+                selectedToolButton.SetActive(false);
+                selectedGemButton.SetActive(true);
+                selectedTool.SetActive(true);
+                selectedTool.GetComponent<Image>().sprite = toolSprites[selectedToolSprite];
+                if (selectedToolSprite != toolSprites.Length/2 - 1 || selectedToolSprite != toolSprites.Length - 1)
+                {
+                    nextUpgradeTool.SetActive(true);
+                    nextUpgradeTool.GetComponent<Image>().sprite = toolSprites[selectedToolSprite + 1];
+                    smithingBar.GetComponent<RectTransform>().localScale = new Vector3(1, nextToolCount / (25 + ((upgradeDifficulty / 2) * 25)), 0);
+                    smithingBar.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+                    craftingRatio.text = nextToolCount + "/" + (25 + ((upgradeDifficulty / 2) * 25));
+                }
+            }
+        }
+        else
+        {
+            isCrafting = false;
+            selectedToolSprite = 0;
+            nextToolCount = 0;
+            upgradeDifficulty = 0;
+        }
     }
 
     // Update is called once per frame
@@ -47,11 +78,17 @@ public class CraftingMenu : MonoBehaviour
         }
     }
 
+    public void Save()
+    {
+        PlayerManager.instance.playerData.SetCrafting(isCrafting, selectedToolSprite, nextToolCount, upgradeDifficulty);
+    }
+
     public void SelectTool()
     {
-        int selectedToolSprite = CheckToolName(selector.GetComponent<Selector>().GetItemName());
+        selectedToolSprite = CheckToolName(selector.GetComponent<Selector>().GetItemName());
         if (selectedToolSprite < toolSprites.Length)
         {
+            isCrafting = true;
             selectedToolButton.SetActive(false);
             selectedGemButton.SetActive(true);
             selectedTool.SetActive(true);
@@ -63,17 +100,21 @@ public class CraftingMenu : MonoBehaviour
                 smithingBar.GetComponent<RectTransform>().localScale = new Vector3(1, 0, 0);
                 craftingRatio.text = nextToolCount + "/" + (25 + ((upgradeDifficulty / 2) * 25));
             }
+            Save();
         }
     }
 
     public int CheckToolName(string selectorItemName)
     {
         int result = toolSprites.Length;
-        for(int i = 0; i < toolSprites.Length; i++)
+        if (selectorItemName != null)
         {
-            if (selectorItemName.Equals(toolSprites[i].name))
+            for (int i = 0; i < toolSprites.Length; i++)
             {
-                result = i;
+                if (selectorItemName.Equals(toolSprites[i].name))
+                {
+                    result = i;
+                }
             }
         }
         return result;
@@ -81,7 +122,7 @@ public class CraftingMenu : MonoBehaviour
 
     public void SelectGem()
     {
-        if (CheckToolName(selector.GetComponent<Selector>().GetItemName()) >= toolSprites.Length)
+        if (CheckToolName(selector.GetComponent<Selector>().GetItemName()) >= toolSprites.Length && selector.GetComponent<Selector>().GetItemName() != null)
         {
             float total = (25 + ((upgradeDifficulty/2) * 25));
             
@@ -106,6 +147,7 @@ public class CraftingMenu : MonoBehaviour
             Inventory.instance.DisplayInventory();
             if (nextToolCount >= total)
             {
+                isCrafting = false;
                 nextToolCount = 0;
                 upgradeDifficulty++;
                 string temp = nextUpgradeTool.GetComponent<Image>().sprite.name;
@@ -133,6 +175,7 @@ public class CraftingMenu : MonoBehaviour
                 selectedToolButton.SetActive(true);
                 selectedGemButton.SetActive(false);
             }
+            Save();
         }
     }
 

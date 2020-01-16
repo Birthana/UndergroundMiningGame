@@ -5,7 +5,7 @@ using UnityEngine;
 public class Contractor : MonoBehaviour
 {
     public GameObject possibleMiningEvents;
-    public bool cooldown = true;
+    public bool cooldown;
 
     void Start()
     {
@@ -14,20 +14,25 @@ public class Contractor : MonoBehaviour
 
     public void OnCollisionStay2D(UnityEngine.Collision2D collision)
     {
-        if (cooldown)
+        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E) & !cooldown)
         {
-            StartCoroutine(Cooldown(collision));
+            cooldown = true;
+            Save();
+            possibleMiningEvents.GetComponent<RandomMiningEvent>().RandomMiningEventSpawn();
         }
     }
 
-    IEnumerator Cooldown(UnityEngine.Collision2D collision)
+    public void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player") && Input.GetKeyDown(KeyCode.E))
-        {
-            possibleMiningEvents.GetComponent<RandomMiningEvent>().RandomMiningEventSpawn();
-            cooldown = false;
-            yield return new WaitForSeconds(5.0f);
-            cooldown = true;
-        }
+        cooldown = false;
+    }
+
+    public void Save()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        PlayerManager.instance.playerData.SetPosition(player.transform.position);
+        Inventory.instance.Save();
+        ZoneManager.instance.Save();
+        DataAccess.Save(PlayerManager.instance.playerData);
     }
 }

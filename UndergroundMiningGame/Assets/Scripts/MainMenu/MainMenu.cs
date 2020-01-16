@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
     public Animator creditsText;
     public Animator backButton;
 
+    public Animator newGameButton;
+    public Animator continueButton;
+
     void Start()
     {
         playButton.SetBool("IsOpen", true);
@@ -21,15 +24,39 @@ public class MainMenu : MonoBehaviour
         titleText.SetBool("IsOpen", true);
         creditsText.SetBool("IsOpen", false);
         backButton.SetBool("IsOpen", false);
+        newGameButton.SetBool("IsOpen", false);
+        continueButton.SetBool("IsOpen", false);
     }
 
     public void Play()
     {
-        StartCoroutine(OpenTransition());
+        playButton.SetBool("IsOpen", false);
+        creditsButton.SetBool("IsOpen", false);
+        quitButton.SetBool("IsOpen", false);
+        titleText.SetBool("IsOpen", true);
+        creditsText.SetBool("IsOpen", false);
+        backButton.SetBool("IsOpen", true);
+        newGameButton.SetBool("IsOpen", true);
+        if (DataAccess.HasSaveFile())
+        {
+            continueButton.SetBool("IsOpen", true);
+        }
     }
 
-    IEnumerator OpenTransition()
+    public void NewGame()
     {
+        StartCoroutine(OpenTransition(false));
+    }
+
+    public void Continue()
+    {
+        StartCoroutine(OpenTransition(true));
+    }
+
+    IEnumerator OpenTransition(bool continuing)
+    {
+        PlayerManager.instance.continuing = continuing;
+        PlayerManager.instance.SetPlayerData();
         TransitionsManager.instance.Open();
         yield return new WaitForSeconds(1.0f);
         SceneManager.LoadScene(1);
@@ -43,6 +70,8 @@ public class MainMenu : MonoBehaviour
         titleText.SetBool("IsOpen", false);
         creditsText.SetBool("IsOpen", true);
         backButton.SetBool("IsOpen", true);
+        newGameButton.SetBool("IsOpen", false);
+        continueButton.SetBool("IsOpen", false);
     }
 
     public void Back()
@@ -53,6 +82,8 @@ public class MainMenu : MonoBehaviour
         titleText.SetBool("IsOpen", true);
         creditsText.SetBool("IsOpen", false);
         backButton.SetBool("IsOpen", false);
+        newGameButton.SetBool("IsOpen", false);
+        continueButton.SetBool("IsOpen", false);
     }
 
     public void Quit()

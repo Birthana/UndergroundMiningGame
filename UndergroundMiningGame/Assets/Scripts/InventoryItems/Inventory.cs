@@ -18,6 +18,7 @@ public class Inventory : MonoBehaviour
     public int page;
     public Sprite background;
     public GameObject selectedInventoryItem;
+
     public Item[] items;
 
     // Start is called before the first frame update
@@ -53,16 +54,51 @@ public class Inventory : MonoBehaviour
                     count++;
                 }
             }
-            AddItem(basicHammer);
-            PlayerManager.instance.currentHammerToolSprite = basicHammer.image;
-            AddItem(basicPick);
-            for (int i = 0; i < items.Length; i++)
+            ResetScriptableObjects();
+            if (PlayerManager.instance.continuing)
             {
-                AddItem(items[i]);
+                int[] savedItems = PlayerManager.instance.playerData.items;
+                for (int i = 0; i < savedItems.Length; i++)
+                {
+                    if (savedItems[i] != 0)
+                    {
+                        if (i < 18)
+                        {
+                            AddItem(items[i]);
+                            ToolItem tempTool = (ToolItem)items[i];
+                            if (tempTool.type.Equals(ToolItem.ToolType.hammer))
+                            {
+                                PlayerManager.instance.currentHammerToolSprite = tempTool.image;
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < savedItems[i]; j++)
+                            {
+                                AddItem(items[i]);
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                AddItem(basicHammer);
+                PlayerManager.instance.currentHammerToolSprite = basicHammer.image;
+                AddItem(basicPick);
             }
             GameObject moneyUI = GameObject.FindGameObjectWithTag("Money");
             moneyAnim = moneyUI.GetComponent<Animator>();
             moneyAmount = moneyUI.GetComponentInChildren<TextMeshProUGUI>();
+            if (PlayerManager.instance.continuing)
+            {
+                moneyAmount.text = "" + PlayerManager.instance.playerData.moneyAmount;
+            }
+            else
+            {
+                moneyAmount.text = "0";
+            }
             selectedInventoryItem.SetActive(false);
         }
         else
@@ -90,46 +126,61 @@ public class Inventory : MonoBehaviour
         }
         float sw = Input.GetAxis("Mouse ScrollWheel");
         GameObject selector = GameObject.FindGameObjectWithTag("Selector");
-        if (sw > 0f)
+        if (selector != null)
         {
-            if (selector.GetComponent<Selector>().currentPosition == 0)
+            if (sw > 0f)
             {
-                selector.GetComponent<Selector>().SetPosition(17);
+                if (selector.GetComponent<Selector>().currentPosition == 0)
+                {
+                    selector.GetComponent<Selector>().SetPosition(17);
+                }
+                else
+                {
+                    selector.GetComponent<Selector>().SetPosition(selector.GetComponent<Selector>().currentPosition - 1);
+                }
             }
-            else
+            else if (sw < 0f)
             {
-                selector.GetComponent<Selector>().SetPosition(selector.GetComponent<Selector>().currentPosition - 1);
+                if (selector.GetComponent<Selector>().currentPosition == 17)
+                {
+                    selector.GetComponent<Selector>().SetPosition(0);
+                }
+                else
+                {
+                    selector.GetComponent<Selector>().SetPosition(selector.GetComponent<Selector>().currentPosition + 1);
+                }
             }
-        }
-        else if(sw < 0f)
-        {
-            if (selector.GetComponent<Selector>().currentPosition == 17)
-            {
-                selector.GetComponent<Selector>().SetPosition(0);
-            }
-            else
-            {
-                selector.GetComponent<Selector>().SetPosition(selector.GetComponent<Selector>().currentPosition + 1);
-            }
-        }
 
-        if (!inventoryAnim.GetBool("IsOpen"))
-        {
-            string itemName = selector.GetComponent<Selector>().GetItemName();
-            if (itemName != null)
+            if (!inventoryAnim.GetBool("IsOpen"))
             {
-                selectedInventoryItem.SetActive(true);
-                selectedInventoryItem.GetComponent<Image>().sprite = GetItemFromSpriteName(itemName).image;
-                selectedInventoryItem.transform.position = Input.mousePosition + new Vector3(-50.0f, 50.0f, 0);
+                string itemName = selector.GetComponent<Selector>().GetItemName();
+                if (itemName != null)
+                {
+                    selectedInventoryItem.SetActive(true);
+                    selectedInventoryItem.GetComponent<Image>().sprite = GetItemFromSpriteName(itemName).image;
+                    selectedInventoryItem.transform.position = Input.mousePosition + new Vector3(-50.0f, 50.0f, 0);
+                }
+                else
+                {
+                    selectedInventoryItem.SetActive(false);
+                }
             }
             else
             {
                 selectedInventoryItem.SetActive(false);
             }
         }
-        else
+    }
+
+    public void ResetScriptableObjects()
+    {
+        foreach (Item tempItems in items)
         {
-            selectedInventoryItem.SetActive(false);
+            if (tempItems.GetType().Equals(System.Type.GetType("GemItem")))
+            {
+                GemItem tempGem = (GemItem)tempItems;
+                tempGem.count = 0;
+            }
         }
     }
 
@@ -233,5 +284,39 @@ public class Inventory : MonoBehaviour
             }
         }
         return itemFromSprite;
+    }
+
+    public int GetItemIndex(Item item)
+    {
+        int result = 0;
+        int count = 0;
+        bool still_looking = true;
+        while (still_looking)
+        {
+            if (item.itemName.Equals(items[count].itemName))
+            {
+                result = count;
+                still_looking = false;
+            }
+            count++;
+        }
+        return result;
+    }
+
+    public void Save()
+    {
+        foreach (Item tempItem in inventory)
+        {
+            if (tempItem.GetType().Equals(System.Type.GetType("GemItem")))
+            {
+                GemItem gemItem = (GemItem)tempItem;
+                PlayerManager.instance.playerData.SetItem(GetItemIndex(tempItem), gemItem.count);
+            }
+            else
+            {
+                PlayerManager.instance.playerData.SetItem(GetItemIndex(tempItem), 1);
+            }
+        }
+        PlayerManager.instance.playerData.SetMoney(int.Parse(moneyAmount.text));
     }
 }

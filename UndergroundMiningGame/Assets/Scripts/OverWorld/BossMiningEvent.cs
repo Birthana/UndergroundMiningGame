@@ -39,8 +39,10 @@ public class BossMiningEvent : MonoBehaviour
         DialogueSystem.instance.yesnoButtons.SetActive(false);
         DialogueSystem.instance.EndDialogue();
         PlayerManager.instance.bossToFight = bossInfo;
-        TransitionsManager.instance.Open();
-        yield return new WaitForSeconds(1.0f);
+        TransitionsManager.instance.bossSprite = bossInfo.bossSprite;
+        TransitionsManager.instance.bossName = bossName;
+        TransitionsManager.instance.BossOpen();
+        yield return new WaitForSeconds(3.0f);
         Inventory.instance.moneyAmount.text = (int.Parse(Inventory.instance.moneyAmount.text) - moneyAmount).ToString();
         PlayerManager.instance.maxHealth = moneyAmount;
         SceneManager.LoadScene(3);

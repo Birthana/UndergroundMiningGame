@@ -218,6 +218,11 @@ public class Boss_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (selector != null)
+        {
+            selector = GameObject.FindGameObjectWithTag("Selector");
+        }
+
         if (!gameEnding)
         {
             CheckHazardsTooltip();

@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
+        this.transform.position = new Vector3(PlayerManager.instance.playerData.x, PlayerManager.instance.playerData.y, 0.0f);
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerSounds = GameObject.FindGameObjectWithTag("PlayerSounds").GetComponent<AudioSource>();

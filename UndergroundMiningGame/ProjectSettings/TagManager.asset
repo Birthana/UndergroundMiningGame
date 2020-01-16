@@ -27,6 +27,8 @@ TagManager:
   - Minion
   - HazardTooltipUI
   - HazardTooltipManager
+  - TransitionManager
+  - PlayerUI
   layers:
   - Default
   - TransparentFX
