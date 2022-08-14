@@ -18,6 +18,10 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        if (!PlayerPrefs.HasKey("CameraSize"))
+        {
+            PlayerPrefs.SetInt("CameraSize", 2);
+        }
         playButton.SetBool("IsOpen", true);
         creditsButton.SetBool("IsOpen", true);
         quitButton.SetBool("IsOpen", true);

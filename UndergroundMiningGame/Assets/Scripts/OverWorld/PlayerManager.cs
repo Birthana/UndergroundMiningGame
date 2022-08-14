@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     public Sprite currentHammerToolSprite;
     public Boss bossToFight;
     public bool continuing;
+    public bool isPaused;
+    public bool animationPlaying;
 
     // Start is called before the first frame update
     void Awake()

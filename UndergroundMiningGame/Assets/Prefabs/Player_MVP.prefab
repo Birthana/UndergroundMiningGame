@@ -83,6 +83,8 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -179,8 +181,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  speed: 2
+  speed: 4
   animator: {fileID: 0}
+  playerSounds: {fileID: 0}
+  tileMap: {fileID: 0}
+  currentSprite: {fileID: 0}
+  walkingSounds: []
+  viewCheck: {fileID: 0}
+  limitedView: {fileID: 0}
+  testClips: []
 --- !u!82 &8695112404659743247
 AudioSource:
   m_ObjectHideFlags: 0

@@ -22,19 +22,23 @@ public class BossMiningEvent : MonoBehaviour
 
     public void Yes()
     {
-        if (int.Parse(Inventory.instance.moneyAmount.text) >= moneyAmount)
+        if (!PlayerManager.instance.isPaused)
         {
-            StartCoroutine(EnterBossMiningEvent());
-        }
-        else
-        {
-            DialogueSystem.instance.yesnoButtons.SetActive(false);
-            DialogueSystem.instance.StartDialogue(dialogueFail);
+            if (int.Parse(Inventory.instance.moneyAmount.text) >= moneyAmount)
+            {
+                StartCoroutine(EnterBossMiningEvent());
+            }
+            else
+            {
+                DialogueSystem.instance.yesnoButtons.SetActive(false);
+                DialogueSystem.instance.StartDialogue(dialogueFail);
+            }
         }
     }
 
     IEnumerator EnterBossMiningEvent()
     {
+        PlayerManager.instance.animationPlaying = true;
         enterBossFight = true;
         DialogueSystem.instance.yesnoButtons.SetActive(false);
         DialogueSystem.instance.EndDialogue();
@@ -45,14 +49,18 @@ public class BossMiningEvent : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         Inventory.instance.moneyAmount.text = (int.Parse(Inventory.instance.moneyAmount.text) - moneyAmount).ToString();
         PlayerManager.instance.maxHealth = moneyAmount;
+        PlayerManager.instance.animationPlaying = false;
         SceneManager.LoadScene(3);
         enterBossFight = false;
     }
 
     public void No()
     {
-        DialogueSystem.instance.yesnoButtons.SetActive(false);
-        DialogueSystem.instance.StartDialogue(dialogueNo);
+        if (!PlayerManager.instance.isPaused)
+        {
+            DialogueSystem.instance.yesnoButtons.SetActive(false);
+            DialogueSystem.instance.StartDialogue(dialogueNo);
+        }
     }
 
     public void OnCollisionStay2D(Collision2D collision)

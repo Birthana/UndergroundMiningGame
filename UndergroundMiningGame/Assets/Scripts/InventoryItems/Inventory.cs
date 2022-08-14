@@ -111,7 +111,7 @@ public class Inventory : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && !PlayerManager.instance.isPaused)
         {
             if (inventoryAnim.GetBool("IsOpen"))
             {
@@ -305,6 +305,7 @@ public class Inventory : MonoBehaviour
 
     public void Save()
     {
+        PlayerManager.instance.playerData.ResetItems();
         foreach (Item tempItem in inventory)
         {
             if (tempItem.GetType().Equals(System.Type.GetType("GemItem")))

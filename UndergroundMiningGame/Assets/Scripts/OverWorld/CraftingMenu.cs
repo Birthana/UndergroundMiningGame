@@ -65,7 +65,7 @@ public class CraftingMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && !PlayerManager.instance.isPaused)
         {
             if (anim.GetBool("IsOpen"))
             {
@@ -86,14 +86,14 @@ public class CraftingMenu : MonoBehaviour
     public void SelectTool()
     {
         selectedToolSprite = CheckToolName(selector.GetComponent<Selector>().GetItemName());
-        if (selectedToolSprite < toolSprites.Length)
+        if (selectedToolSprite < toolSprites.Length && !(selectedToolSprite == toolSprites.Length / 2 - 1 || selectedToolSprite == toolSprites.Length - 1))
         {
             isCrafting = true;
             selectedToolButton.SetActive(false);
             selectedGemButton.SetActive(true);
             selectedTool.SetActive(true);
             selectedTool.GetComponent<Image>().sprite = toolSprites[selectedToolSprite];
-            if (selectedToolSprite != toolSprites.Length/2 - 1 || selectedToolSprite != toolSprites.Length - 1)
+            if (!(selectedToolSprite == toolSprites.Length / 2 - 1 || selectedToolSprite == toolSprites.Length - 1))
             {
                 nextUpgradeTool.SetActive(true);
                 nextUpgradeTool.GetComponent<Image>().sprite = toolSprites[selectedToolSprite + 1];
@@ -156,12 +156,14 @@ public class CraftingMenu : MonoBehaviour
                     temp.Equals("tools_15") || temp.Equals("tools_16") || temp.Equals("tools_17"))
                 {
                     PlayerManager.instance.currentHammerToolSprite = nextUpgradeTool.GetComponent<Image>().sprite;
+                    PlayerManager.instance.playerData.SetItem(Inventory.instance.GetItemIndex(Inventory.instance.GetItemFromSpriteName(selectedTool.GetComponent<Image>().sprite.name)), 0);
                     Inventory.instance.inventory.Remove(Inventory.instance.GetItemFromSpriteName(selectedTool.GetComponent<Image>().sprite.name));
                     Inventory.instance.inventory.Insert(0, GetItemFromSpriteName(nextUpgradeTool.GetComponent<Image>().sprite.name));
                     Inventory.instance.DisplayInventory();
                 }
                 else
                 {
+                    PlayerManager.instance.playerData.SetItem(Inventory.instance.GetItemIndex(Inventory.instance.GetItemFromSpriteName(selectedTool.GetComponent<Image>().sprite.name)), 0);
                     Inventory.instance.inventory.Remove(Inventory.instance.GetItemFromSpriteName(selectedTool.GetComponent<Image>().sprite.name));
                     Inventory.instance.inventory.Insert(1, GetItemFromSpriteName(nextUpgradeTool.GetComponent<Image>().sprite.name));
                     Inventory.instance.DisplayInventory();

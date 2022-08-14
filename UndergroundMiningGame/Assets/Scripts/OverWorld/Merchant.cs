@@ -42,27 +42,33 @@ public class Merchant : MonoBehaviour
 
     public void No()
     {
-        DialogueSystem.instance.yesnoButtons.SetActive(false);
-        DialogueSystem.instance.StartDialogue(dialogueNo);
+        if (!PlayerManager.instance.isPaused)
+        {
+            DialogueSystem.instance.yesnoButtons.SetActive(false);
+            DialogueSystem.instance.StartDialogue(dialogueNo);
+        }
     }
 
     public void YesSell()
     {
-        Item[] temp = Inventory.instance.inventory.ToArray();
-        foreach (var tempItem in temp)
+        if (!PlayerManager.instance.isPaused)
         {
-            if (tempItem.GetType().Equals(System.Type.GetType("GemItem")))
+            Item[] temp = Inventory.instance.inventory.ToArray();
+            foreach (var tempItem in temp)
             {
-                GemItem tempGem = (GemItem)tempItem;
-                Inventory.instance.moneyAmount.text = (int.Parse(Inventory.instance.moneyAmount.text) + 1 * tempGem.count * (Mathf.Pow((int)tempGem.grade + 1, 3))).ToString();
-                tempGem.count = 0;
-                Inventory.instance.inventory.Remove(tempItem);
+                if (tempItem.GetType().Equals(System.Type.GetType("GemItem")))
+                {
+                    GemItem tempGem = (GemItem)tempItem;
+                    Inventory.instance.moneyAmount.text = (int.Parse(Inventory.instance.moneyAmount.text) + 3 * tempGem.count * (Mathf.Pow((int)tempGem.grade + 1, 3))).ToString();
+                    tempGem.count = 0;
+                    Inventory.instance.inventory.Remove(tempItem);
+                }
             }
+            Inventory.instance.page = 1;
+            Inventory.instance.DisplayInventory();
+            DialogueSystem.instance.yesnoButtons.SetActive(false);
+            DialogueSystem.instance.StartDialogue(dialoguePass);
         }
-        Inventory.instance.page = 1;
-        Inventory.instance.DisplayInventory();
-        DialogueSystem.instance.yesnoButtons.SetActive(false);
-        DialogueSystem.instance.StartDialogue(dialoguePass);
     }
 
     public void YesUnlock()

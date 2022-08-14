@@ -29,6 +29,8 @@ TagManager:
   - HazardTooltipManager
   - TransitionManager
   - PlayerUI
+  - ViewCheck
+  - LimitedView
   layers:
   - Default
   - TransparentFX

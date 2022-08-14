@@ -57,4 +57,12 @@ public class SavaData
         nextToolCount = craftingProgress;
         upgradeDifficulty = craftingDifficulty;
     }
+
+    public void ResetItems()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            items[i] = 0;
+        }
+    }
 }
