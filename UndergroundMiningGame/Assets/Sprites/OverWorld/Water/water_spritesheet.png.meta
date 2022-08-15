@@ -270,7 +270,7 @@ TextureImporter:
       213: 5351914701608584371
     second: water_spritesheet_88
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -290,6 +290,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -299,8 +301,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -321,9 +323,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -2243,6 +2249,96 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      water_spritesheet_26: -5315265503462486244
+      water_spritesheet_59: -8207660141042734275
+      water_spritesheet_61: -3890306492322337092
+      water_spritesheet_3: 4772820060815487387
+      water_spritesheet_77: 5042813581206822356
+      water_spritesheet_73: -4629522718037562611
+      water_spritesheet_39: 8550284255401056329
+      water_spritesheet_83: 1592994349113667013
+      water_spritesheet_1: -5398071572023988629
+      water_spritesheet_62: -7888725876870897318
+      water_spritesheet_20: -957360982787464404
+      water_spritesheet_28: -7765995991623086164
+      water_spritesheet_46: -1298996057575267983
+      water_spritesheet_82: -5031732043543056725
+      water_spritesheet_7: -5289530356878689545
+      water_spritesheet_17: -3019631952407202130
+      water_spritesheet_58: -6084848639022944268
+      water_spritesheet_74: -4039041588971385812
+      water_spritesheet_70: -1840783690230889592
+      water_spritesheet_15: 7391341374412769157
+      water_spritesheet_43: -9076279879243599892
+      water_spritesheet_69: 5783750784998348598
+      water_spritesheet_64: -8868548297146212996
+      water_spritesheet_33: 7016855054060437655
+      water_spritesheet_9: 8999202339634475624
+      water_spritesheet_55: 7975133533835728695
+      water_spritesheet_60: -7805276091934967439
+      water_spritesheet_66: -879592893330936798
+      water_spritesheet_37: -4229430539206146554
+      water_spritesheet_23: 4338594696564283340
+      water_spritesheet_53: -2338637120424323024
+      water_spritesheet_71: 4861707626313177947
+      water_spritesheet_40: 5060884671395577903
+      water_spritesheet_34: -7757135571578031516
+      water_spritesheet_22: 5853265949019986784
+      water_spritesheet_19: 6658690207205486272
+      water_spritesheet_30: 3609784237495652684
+      water_spritesheet_42: 8944500451031739082
+      water_spritesheet_5: 6320168839086213711
+      water_spritesheet_25: 6326445312730296300
+      water_spritesheet_88: 5351914701608584371
+      water_spritesheet_10: 3578524255772934679
+      water_spritesheet_81: -2549283633290142391
+      water_spritesheet_56: -4491856934608326145
+      water_spritesheet_50: -6392898089722538061
+      water_spritesheet_47: 8286670311230321674
+      water_spritesheet_2: -5290397428958492137
+      water_spritesheet_36: 7683278732538294266
+      water_spritesheet_78: 7843916093064167832
+      water_spritesheet_13: 3883868816917792920
+      water_spritesheet_87: -5906970955035963427
+      water_spritesheet_12: 3222179540746467341
+      water_spritesheet_41: -3763839771696771269
+      water_spritesheet_76: 4795114774452829243
+      water_spritesheet_4: 2104419976482982513
+      water_spritesheet_57: -1416735858089250127
+      water_spritesheet_24: -6354620030563352409
+      water_spritesheet_35: -1968756183395695196
+      water_spritesheet_75: 8716517588824341020
+      water_spritesheet_44: 7210250375814021366
+      water_spritesheet_45: -2062040788504360731
+      water_spritesheet_0: 8411161998918550904
+      water_spritesheet_16: 4230209164801640389
+      water_spritesheet_63: -2702459785156227462
+      water_spritesheet_68: -858680532644352560
+      water_spritesheet_14: 1558085649126014226
+      water_spritesheet_65: -4198967544811187780
+      water_spritesheet_79: 6123766192443062274
+      water_spritesheet_67: -6025598424930075737
+      water_spritesheet_27: -4635502183294752404
+      water_spritesheet_8: 1029159833718893943
+      water_spritesheet_48: -5118639999104632255
+      water_spritesheet_52: -4379022177660507244
+      water_spritesheet_51: 2264718902144932934
+      water_spritesheet_38: -943056020245867751
+      water_spritesheet_72: 128145700458213919
+      water_spritesheet_85: 4179680591285988779
+      water_spritesheet_54: 6513964589632934760
+      water_spritesheet_80: -1800329879397963572
+      water_spritesheet_84: -7784232406341618230
+      water_spritesheet_29: -7995586082736239294
+      water_spritesheet_11: 5877305428967595859
+      water_spritesheet_18: 1597338495845552654
+      water_spritesheet_49: 1934586401636642782
+      water_spritesheet_6: -3993861771747662215
+      water_spritesheet_31: -8879958248254783350
+      water_spritesheet_86: 553069477448591175
+      water_spritesheet_32: 3895766499628887070
+      water_spritesheet_21: 2419985732384301923
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

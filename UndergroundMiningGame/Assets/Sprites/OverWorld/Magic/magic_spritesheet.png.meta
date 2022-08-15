@@ -243,7 +243,7 @@ TextureImporter:
       213: 262538099729113507
     second: magic_spritesheet_79
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -263,6 +263,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -272,8 +274,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -294,9 +296,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -2027,6 +2033,87 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      magic_spritesheet_31: -5974009762882726749
+      magic_spritesheet_62: -7958808051338774536
+      magic_spritesheet_33: -8575190840437656057
+      magic_spritesheet_60: -3251957660649388104
+      magic_spritesheet_41: -1412299145086604863
+      magic_spritesheet_55: -887471004183147924
+      magic_spritesheet_48: 6867334964676853899
+      magic_spritesheet_19: 1412539178218480476
+      magic_spritesheet_32: -4027201582097499256
+      magic_spritesheet_58: 7851845110053085423
+      magic_spritesheet_25: 7277515240268417229
+      magic_spritesheet_26: 3212988358913159012
+      magic_spritesheet_68: -7489098409884193100
+      magic_spritesheet_39: 2882944645356584472
+      magic_spritesheet_66: 7050758639539097048
+      magic_spritesheet_2: 8545061044501013680
+      magic_spritesheet_46: 2987583950206904582
+      magic_spritesheet_77: 6142274944231840555
+      magic_spritesheet_10: -5016425096340899577
+      magic_spritesheet_40: -1775842642912858696
+      magic_spritesheet_0: 8237243116132044443
+      magic_spritesheet_67: 3542517215594476782
+      magic_spritesheet_65: -4783867065436013754
+      magic_spritesheet_71: 133664699535580498
+      magic_spritesheet_12: -2843851281142790254
+      magic_spritesheet_49: 2967559417562394643
+      magic_spritesheet_37: 849730472019463446
+      magic_spritesheet_18: -53267255660845108
+      magic_spritesheet_28: -8775192055131417547
+      magic_spritesheet_21: 3716637846316975912
+      magic_spritesheet_24: -6417719399312282074
+      magic_spritesheet_74: -581695771589914520
+      magic_spritesheet_30: -7462632965202167973
+      magic_spritesheet_64: 4606666501393460146
+      magic_spritesheet_20: 2064262833809415993
+      magic_spritesheet_43: 7668709807627872456
+      magic_spritesheet_29: 7334424965517780701
+      magic_spritesheet_35: 7477207884124821749
+      magic_spritesheet_16: -8557196846833009447
+      magic_spritesheet_23: 2632895959905604510
+      magic_spritesheet_45: -4887344339560628740
+      magic_spritesheet_15: -8990592529546177778
+      magic_spritesheet_3: -3633487889500520445
+      magic_spritesheet_27: 3504577201932441230
+      magic_spritesheet_57: 8919027618944989371
+      magic_spritesheet_22: 2191450473191168366
+      magic_spritesheet_4: 3354965401540227856
+      magic_spritesheet_11: -7568870988239832773
+      magic_spritesheet_13: 7257992722122967343
+      magic_spritesheet_5: 8789888211010390082
+      magic_spritesheet_54: 4717032416772801050
+      magic_spritesheet_14: -4714681157276599864
+      magic_spritesheet_75: -8110705228319363920
+      magic_spritesheet_8: 4444020023791370811
+      magic_spritesheet_69: -3255680263417204340
+      magic_spritesheet_38: -6483804340740264545
+      magic_spritesheet_76: 6754155751702418646
+      magic_spritesheet_9: 6632717403692115612
+      magic_spritesheet_79: 262538099729113507
+      magic_spritesheet_52: -7854631525491227643
+      magic_spritesheet_44: -2802101585767639848
+      magic_spritesheet_53: -2720618587350263584
+      magic_spritesheet_51: -6837172956747161861
+      magic_spritesheet_42: -6479383356310030294
+      magic_spritesheet_1: 5998162663910549919
+      magic_spritesheet_78: -4786771227375279965
+      magic_spritesheet_47: 6039396281582388841
+      magic_spritesheet_63: -6910373133404592484
+      magic_spritesheet_73: -6512494391203476621
+      magic_spritesheet_70: 6532158262294983157
+      magic_spritesheet_36: -2375239805580099045
+      magic_spritesheet_17: -7229280581843786689
+      magic_spritesheet_61: 7683527157385444066
+      magic_spritesheet_7: -7613294989346784228
+      magic_spritesheet_56: 658418704611316901
+      magic_spritesheet_72: 1805738184521615062
+      magic_spritesheet_59: 3027511937002735263
+      magic_spritesheet_6: -2853770675419106522
+      magic_spritesheet_50: 2481796400252054366
+      magic_spritesheet_34: 2679978543126155587
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

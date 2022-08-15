@@ -99,7 +99,7 @@ TextureImporter:
       213: -2453873150244555126
     second: 64byrewards2_31
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -119,6 +119,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -128,8 +130,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -150,9 +152,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -875,6 +881,39 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      64byrewards2_0: -7051184001658611600
+      64byrewards2_5: 7492287598316473101
+      64byrewards2_12: 91155903208642925
+      64byrewards2_4: -6998664452789549549
+      64byrewards2_6: 917289369612007294
+      64byrewards2_15: 1609666837965817408
+      64byrewards2_26: -4035335432202938442
+      64byrewards2_11: -7730564445893288164
+      64byrewards2_9: -3886278159092247075
+      64byrewards2_18: -5049362781683026662
+      64byrewards2_22: -4843849451930936082
+      64byrewards2_8: -1901789563571072246
+      64byrewards2_2: 3433662929069531612
+      64byrewards2_1: -6296991162353272889
+      64byrewards2_16: -4240543971858990046
+      64byrewards2_27: -694658867667181551
+      64byrewards2_7: 9062594262128437975
+      64byrewards2_10: 5559545710197417001
+      64byrewards2_3: -3899791448117361101
+      64byrewards2_29: -7552417272461629280
+      64byrewards2_19: 4018490127160968233
+      64byrewards2_28: 879394539035503344
+      64byrewards2_31: -2453873150244555126
+      64byrewards2_21: -3413263178881175051
+      64byrewards2_14: -448486171707930485
+      64byrewards2_30: 5064942806555857735
+      64byrewards2_24: 7879507226606401966
+      64byrewards2_20: 5079743134893279353
+      64byrewards2_13: -4236232042550147264
+      64byrewards2_17: -7543606376826304778
+      64byrewards2_25: 3438048004440913764
+      64byrewards2_23: -60286977639182412
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

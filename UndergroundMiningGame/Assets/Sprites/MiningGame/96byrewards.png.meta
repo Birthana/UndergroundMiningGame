@@ -84,7 +84,7 @@ TextureImporter:
       213: -527254656506324336
     second: 96byrewards_26
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -104,6 +104,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -113,8 +115,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -135,9 +137,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -755,6 +761,34 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      96byrewards_1: 4663775037580987407
+      96byrewards_10: 430688482020028020
+      96byrewards_11: -644914181383698199
+      96byrewards_4: 3585547840413603400
+      96byrewards_5: 9166048576527485464
+      96byrewards_25: 6846767925096258323
+      96byrewards_2: -1334744253616586134
+      96byrewards_18: -3588942083844155756
+      96byrewards_9: -2744450610914625859
+      96byrewards_15: -4623531220529159067
+      96byrewards_21: 5217955905669205917
+      96byrewards_3: 6234703456340135487
+      96byrewards_8: -4862860285350827684
+      96byrewards_16: -2084669056244108924
+      96byrewards_26: -527254656506324336
+      96byrewards_13: -4053178098297956360
+      96byrewards_12: -7846766063564089914
+      96byrewards_23: -7287759214898570478
+      96byrewards_0: -1733828971700094532
+      96byrewards_24: -8425812461970529098
+      96byrewards_14: -8990656114969740636
+      96byrewards_19: -7275419637561336755
+      96byrewards_20: 5825393697307816590
+      96byrewards_17: -724836479879456688
+      96byrewards_22: 2925552075519477964
+      96byrewards_6: 3746345261716590769
+      96byrewards_7: 5866544017018226298
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -8,6 +8,9 @@ using TMPro;
 
 public class Boss_GameManager : MonoBehaviour
 {
+    //Need seperate class to display boss ui.
+    //Boss_GameManager should only manage the game, nothing else.
+    
     public Boss bossInfo;
     public SpriteRenderer bossSprite;
     public int bossCurrentHealth;

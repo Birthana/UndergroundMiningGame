@@ -39,7 +39,7 @@ TextureImporter:
       213: -118840653870509600
     second: bill_nye_npc_11
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -59,6 +59,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -68,8 +70,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -90,9 +92,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -395,6 +401,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      bill_nye_npc_10: 7189453419236455071
+      bill_nye_npc_2: 4912192656536662868
+      bill_nye_npc_8: 5631454403043981374
+      bill_nye_npc_11: -118840653870509600
+      bill_nye_npc_7: 5623492833387286604
+      bill_nye_npc_6: -2234799625792106072
+      bill_nye_npc_5: 2468768592556691990
+      bill_nye_npc_1: -5726236542844902310
+      bill_nye_npc_3: -5197205894801161995
+      bill_nye_npc_4: 2706292146802261689
+      bill_nye_npc_9: 7747674012034089102
+      bill_nye_npc_0: -753611790581331587
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

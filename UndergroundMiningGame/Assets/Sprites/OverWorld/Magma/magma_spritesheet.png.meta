@@ -273,7 +273,7 @@ TextureImporter:
       213: 8350587109163747651
     second: magma_spritesheet_89
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -293,6 +293,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -302,8 +304,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -324,9 +326,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -2267,6 +2273,97 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      magma_spritesheet_30: 7380725192109324297
+      magma_spritesheet_49: 6755151684538394332
+      magma_spritesheet_89: 8350587109163747651
+      magma_spritesheet_18: 1578401154040284151
+      magma_spritesheet_76: -6202520107697635284
+      magma_spritesheet_38: 8504303242081210879
+      magma_spritesheet_41: -7642085899760894015
+      magma_spritesheet_26: -4973977684964054837
+      magma_spritesheet_77: 7938851351117307259
+      magma_spritesheet_57: 8444132520542172589
+      magma_spritesheet_40: -5995827256266724646
+      magma_spritesheet_22: 8788908620076324478
+      magma_spritesheet_1: -490740512554419251
+      magma_spritesheet_12: -9114252270379783291
+      magma_spritesheet_63: 3712552770072698245
+      magma_spritesheet_85: -6116950356140684639
+      magma_spritesheet_0: -4771721520442271312
+      magma_spritesheet_4: 8265138647408693383
+      magma_spritesheet_54: 6849752179528940769
+      magma_spritesheet_5: -2843071916645473308
+      magma_spritesheet_32: -1100557272424317512
+      magma_spritesheet_82: -2021010748272084900
+      magma_spritesheet_37: 2236232158737529012
+      magma_spritesheet_83: -4397280053567569985
+      magma_spritesheet_33: 364441426293815136
+      magma_spritesheet_7: -2088578120738195530
+      magma_spritesheet_11: 2066879440941059407
+      magma_spritesheet_16: -6069388416432225757
+      magma_spritesheet_35: 402907895172492005
+      magma_spritesheet_64: 5749008699277188262
+      magma_spritesheet_23: 1465696560212225009
+      magma_spritesheet_72: 2078014121512905841
+      magma_spritesheet_87: -3143855933638381043
+      magma_spritesheet_71: -5442293499773857574
+      magma_spritesheet_10: 2336959166270709172
+      magma_spritesheet_78: 1028334327268281098
+      magma_spritesheet_48: 6846594677419191365
+      magma_spritesheet_75: -5482891678444834914
+      magma_spritesheet_62: 4480078807427027261
+      magma_spritesheet_65: -8649678605487883797
+      magma_spritesheet_81: -7691499626706475790
+      magma_spritesheet_46: 1603197132588937056
+      magma_spritesheet_68: -3910573085381921232
+      magma_spritesheet_61: 6686902867049480882
+      magma_spritesheet_44: -4150510108632029746
+      magma_spritesheet_15: 6429440471832910632
+      magma_spritesheet_45: 3842500938102888786
+      magma_spritesheet_69: -8326694697828374409
+      magma_spritesheet_34: 4850097112201399919
+      magma_spritesheet_43: -937231723953322369
+      magma_spritesheet_2: -3313837606495751739
+      magma_spritesheet_9: -3504911451287900347
+      magma_spritesheet_24: 8212078522767854947
+      magma_spritesheet_28: -2707419322680056028
+      magma_spritesheet_66: 4620443285355524254
+      magma_spritesheet_19: -7900082439045392456
+      magma_spritesheet_84: 3382168895368190435
+      magma_spritesheet_20: -3670362527998278022
+      magma_spritesheet_60: 2949381760263327174
+      magma_spritesheet_29: -8776346879046870774
+      magma_spritesheet_52: 7441372489427631418
+      magma_spritesheet_36: -4378734439790651860
+      magma_spritesheet_47: -8915426481580214540
+      magma_spritesheet_6: 7459167380776090936
+      magma_spritesheet_50: 3349060996079245289
+      magma_spritesheet_39: 8975016361639101430
+      magma_spritesheet_51: 553455844170233597
+      magma_spritesheet_31: -6691657310273696278
+      magma_spritesheet_17: 4150879730093426415
+      magma_spritesheet_21: 137786341566035954
+      magma_spritesheet_79: -5873668423458328624
+      magma_spritesheet_13: 6614820334136177526
+      magma_spritesheet_3: 4208975177880500889
+      magma_spritesheet_8: -6342987327094824551
+      magma_spritesheet_42: -5865393405888857029
+      magma_spritesheet_86: -6974929106504289086
+      magma_spritesheet_67: -4146945132986275469
+      magma_spritesheet_73: -5000496629933446885
+      magma_spritesheet_80: -6645124374765578527
+      magma_spritesheet_88: 6024404463887796036
+      magma_spritesheet_14: -8700217537841224827
+      magma_spritesheet_74: 3862767999751385357
+      magma_spritesheet_56: -3818700829361993815
+      magma_spritesheet_58: 3512696439464454501
+      magma_spritesheet_53: 44885614122661663
+      magma_spritesheet_27: 2433541315330738298
+      magma_spritesheet_59: -5112022297171104609
+      magma_spritesheet_70: 6699060160772007294
+      magma_spritesheet_55: 7219934652580778999
+      magma_spritesheet_25: 684621073903826050
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

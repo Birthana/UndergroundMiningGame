@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class holds info of boss & attacks.
+
 [System.Serializable]
 [CreateAssetMenu(fileName = "Boss.asset", menuName = "Boss/Boss")]
 public class Boss : ScriptableObject

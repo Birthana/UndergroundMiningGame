@@ -225,7 +225,7 @@ TextureImporter:
       213: 2671757048285330205
     second: mushroom_spritesheet_73
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -245,6 +245,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -254,8 +256,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -276,9 +278,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1883,6 +1889,81 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      mushroom_spritesheet_45: 4690976126256495626
+      mushroom_spritesheet_24: 6135479764578358057
+      mushroom_spritesheet_65: -6323183940098573476
+      mushroom_spritesheet_47: -6318235069835655559
+      mushroom_spritesheet_54: 2353257072625173211
+      mushroom_spritesheet_22: -3799687002460493916
+      mushroom_spritesheet_57: 1262010634723355726
+      mushroom_spritesheet_70: -8196071012288597683
+      mushroom_spritesheet_68: 6947948553604074027
+      mushroom_spritesheet_31: 7114373335396868253
+      mushroom_spritesheet_23: 1885441955201646280
+      mushroom_spritesheet_50: -3845162582605244702
+      mushroom_spritesheet_72: -8197904610138475680
+      mushroom_spritesheet_44: -8336922704284070553
+      mushroom_spritesheet_52: 6106358142854179567
+      mushroom_spritesheet_63: -2972256633911319912
+      mushroom_spritesheet_64: -4666687520615089351
+      mushroom_spritesheet_43: 493729196116987955
+      mushroom_spritesheet_0: 3288888100976258158
+      mushroom_spritesheet_27: -1167608663459760832
+      mushroom_spritesheet_69: 1113736882148806982
+      mushroom_spritesheet_11: 198467405082416852
+      mushroom_spritesheet_30: 6451244308200835405
+      mushroom_spritesheet_38: 1010359804261229474
+      mushroom_spritesheet_48: -3828786482660465706
+      mushroom_spritesheet_39: 8051938822230369903
+      mushroom_spritesheet_9: 4759710517074218226
+      mushroom_spritesheet_15: 9086176107643668720
+      mushroom_spritesheet_42: -5931222473078359628
+      mushroom_spritesheet_4: -7719893714641155397
+      mushroom_spritesheet_10: -2385177447425715584
+      mushroom_spritesheet_7: 5627912872280428350
+      mushroom_spritesheet_67: -5041407625098069294
+      mushroom_spritesheet_16: -8663930459143245631
+      mushroom_spritesheet_49: 4067012366493796061
+      mushroom_spritesheet_62: 2328614682859643353
+      mushroom_spritesheet_3: -6778093897039987148
+      mushroom_spritesheet_6: -1806900957733706902
+      mushroom_spritesheet_46: -1726377115599843722
+      mushroom_spritesheet_59: 2411894832293965369
+      mushroom_spritesheet_55: 8052297253904669623
+      mushroom_spritesheet_36: -3621888189053546570
+      mushroom_spritesheet_41: -3137101781688610157
+      mushroom_spritesheet_35: 5572879504907887355
+      mushroom_spritesheet_20: 1146933011265259498
+      mushroom_spritesheet_8: 4864933341867447725
+      mushroom_spritesheet_29: -1217388486306236353
+      mushroom_spritesheet_19: 2708774868068277218
+      mushroom_spritesheet_17: 7123164829483171079
+      mushroom_spritesheet_28: 8005717009716526728
+      mushroom_spritesheet_32: 1071788415252132378
+      mushroom_spritesheet_37: 6706704839947979092
+      mushroom_spritesheet_40: -1382352529955619308
+      mushroom_spritesheet_58: -4198816190257861559
+      mushroom_spritesheet_33: -8427209397165499912
+      mushroom_spritesheet_21: 5314106717898382022
+      mushroom_spritesheet_53: 2647935765745782864
+      mushroom_spritesheet_34: -2647943419182749405
+      mushroom_spritesheet_73: 2671757048285330205
+      mushroom_spritesheet_66: 7684666640816840641
+      mushroom_spritesheet_14: 74427871200981466
+      mushroom_spritesheet_60: 5426610950211459303
+      mushroom_spritesheet_61: -8758534345142653770
+      mushroom_spritesheet_26: -1802894140670960081
+      mushroom_spritesheet_25: 1402032698782650462
+      mushroom_spritesheet_2: 1010297747548222743
+      mushroom_spritesheet_12: -3970975701035776793
+      mushroom_spritesheet_13: 3129997671118383515
+      mushroom_spritesheet_71: -8361104966552638905
+      mushroom_spritesheet_56: 7263746596795655848
+      mushroom_spritesheet_18: -8766846451699427777
+      mushroom_spritesheet_5: -2263697500124440278
+      mushroom_spritesheet_51: 607745256984465581
+      mushroom_spritesheet_1: -2095693020844492581
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -513,7 +513,7 @@ TextureImporter:
       213: 5505194278087499119
     second: ice_spritesheet2_84
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -533,6 +533,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -542,8 +544,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -564,9 +566,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -2390,6 +2396,92 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ice_spritesheet2_67: 7732208897890768045
+      ice_spritesheet2_45: 8545955998736427067
+      ice_spritesheet2_35: 1656485540971384839
+      ice_spritesheet2_30: -8574329626798799458
+      ice_spritesheet2_64: 1829249972803797626
+      ice_spritesheet2_66: -4779995858004739380
+      ice_spritesheet2_73: 1058949303221436408
+      ice_spritesheet2_4: -2190545901181375813
+      ice_spritesheet2_22: -5214823565183348048
+      ice_spritesheet2_28: -358231438372583748
+      ice_spritesheet2_84: 5505194278087499119
+      ice_spritesheet2_50: 7697224611405942497
+      ice_spritesheet2_53: 4357416645917754476
+      ice_spritesheet2_78: 8714060182488030962
+      ice_spritesheet2_36: 4456834515988623861
+      ice_spritesheet2_77: -5267120803398691336
+      ice_spritesheet2_81: 4921010694883600558
+      ice_spritesheet2_39: -3243956644813285112
+      ice_spritesheet2_52: -8167301932028648987
+      ice_spritesheet2_68: -8328741158826737535
+      ice_spritesheet2_21: -4899700488650685512
+      ice_spritesheet2_44: 3835208889553633453
+      ice_spritesheet2_3: -1212729007400860371
+      ice_spritesheet2_38: -3139641253781156644
+      ice_spritesheet2_29: -3405389859850969978
+      ice_spritesheet2_61: -4126604496102099838
+      ice_spritesheet2_82: -2867244193480769146
+      ice_spritesheet2_9: -8576143072205387366
+      ice_spritesheet2_8: -5765439588424565322
+      ice_spritesheet2_70: 8477122224655767309
+      ice_spritesheet2_56: 7333013304614117297
+      ice_spritesheet2_74: -210119898792062757
+      ice_spritesheet2_0: -6597834965176400859
+      ice_spritesheet2_57: 3144165509052105084
+      ice_spritesheet2_23: -6687085313274438820
+      ice_spritesheet2_80: -7721037002918906446
+      ice_spritesheet2_62: -5253108513674988961
+      ice_spritesheet2_75: 7749573590773195646
+      ice_spritesheet2_79: -2021654194791025716
+      ice_spritesheet2_42: -2505280157723211334
+      ice_spritesheet2_83: -6760676785821019834
+      ice_spritesheet2_13: -6628891150742994038
+      ice_spritesheet2_58: 7955461160016949895
+      ice_spritesheet2_15: -7585594740300848143
+      ice_spritesheet2_16: -2158609299231725574
+      ice_spritesheet2_5: 2361771980395586881
+      ice_spritesheet2_69: 6428938773191526945
+      ice_spritesheet2_33: 1270235714314030570
+      ice_spritesheet2_48: -4928785331869846671
+      ice_spritesheet2_2: -106030222388960273
+      ice_spritesheet2_76: -4886643097242638302
+      ice_spritesheet2_49: -273723034745030553
+      ice_spritesheet2_34: 2869504645261053919
+      ice_spritesheet2_60: -8792279194741552378
+      ice_spritesheet2_12: -7027418154533524208
+      ice_spritesheet2_27: -2406771031047987058
+      ice_spritesheet2_1: 7140436377817942476
+      ice_spritesheet2_20: -72896186082918092
+      ice_spritesheet2_24: -8847644555687997979
+      ice_spritesheet2_6: -47262457921816166
+      ice_spritesheet2_55: -3418821255688500316
+      ice_spritesheet2_51: 1925372617011204868
+      ice_spritesheet2_54: -9091857218034220419
+      ice_spritesheet2_65: 6584264928445738782
+      ice_spritesheet2_72: -636532200168582112
+      ice_spritesheet2_17: -4109639214126252696
+      ice_spritesheet2_31: 9109567924052428284
+      ice_spritesheet2_14: -4841592157725616348
+      ice_spritesheet2_19: 4676267454278133971
+      ice_spritesheet2_10: 4569944864357303348
+      ice_spritesheet2_43: 6983808941427060070
+      ice_spritesheet2_26: -4090715685459774950
+      ice_spritesheet2_25: -4790159099814071853
+      ice_spritesheet2_63: 8838713111190566142
+      ice_spritesheet2_71: -5159005870066476633
+      ice_spritesheet2_18: -4696691124443270621
+      ice_spritesheet2_46: -7598953638013126663
+      ice_spritesheet2_41: 92992712498522573
+      ice_spritesheet2_7: -8343697328933736818
+      ice_spritesheet2_32: -461766221153271345
+      ice_spritesheet2_11: -4215750746721215909
+      ice_spritesheet2_37: 2010277279146835959
+      ice_spritesheet2_47: 6598435774551352207
+      ice_spritesheet2_40: 7768223691324205920
+      ice_spritesheet2_59: 6564028065035525246
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

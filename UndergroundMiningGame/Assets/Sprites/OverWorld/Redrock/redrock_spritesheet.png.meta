@@ -138,7 +138,7 @@ TextureImporter:
       213: -1886970091268931883
     second: redrock_spritesheet_44
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -158,6 +158,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -167,8 +169,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -189,9 +191,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1187,6 +1193,52 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      redrock_spritesheet_9: -5016916198487503125
+      redrock_spritesheet_8: 7712262580836182261
+      redrock_spritesheet_35: 3396204229989730158
+      redrock_spritesheet_22: -1788047013447772042
+      redrock_spritesheet_44: -1886970091268931883
+      redrock_spritesheet_1: 8552711716268792751
+      redrock_spritesheet_17: 5318056927793919121
+      redrock_spritesheet_37: -2990116224182588522
+      redrock_spritesheet_30: 8972748115895336144
+      redrock_spritesheet_10: 5903610805457338806
+      redrock_spritesheet_7: -1921143242780018722
+      redrock_spritesheet_23: -8172851113802257561
+      redrock_spritesheet_21: -310289469735050888
+      redrock_spritesheet_24: -2096614266207062860
+      redrock_spritesheet_5: -2619909078032506267
+      redrock_spritesheet_27: -3357497794602459368
+      redrock_spritesheet_20: -1191852830225960384
+      redrock_spritesheet_32: -7846913409430201747
+      redrock_spritesheet_41: 3216016083965426101
+      redrock_spritesheet_29: 8823611711645766851
+      redrock_spritesheet_4: -349215877140015642
+      redrock_spritesheet_34: -3048194203879225789
+      redrock_spritesheet_33: 2401014241269477252
+      redrock_spritesheet_19: -8080095829115580793
+      redrock_spritesheet_2: 2873630726488176578
+      redrock_spritesheet_16: -5095567826852324488
+      redrock_spritesheet_43: -369818698163610561
+      redrock_spritesheet_14: 1011196532953590224
+      redrock_spritesheet_15: 4374725064309344943
+      redrock_spritesheet_3: 5523265451210189255
+      redrock_spritesheet_25: -5310590907466248571
+      redrock_spritesheet_11: 2144984472368267229
+      redrock_spritesheet_38: 4601070770613409647
+      redrock_spritesheet_31: -7583019218857252839
+      redrock_spritesheet_36: 1470379487867847448
+      redrock_spritesheet_12: 4839310512532553440
+      redrock_spritesheet_13: -2380579852602390758
+      redrock_spritesheet_40: 5786222934526876870
+      redrock_spritesheet_26: -6700247518291969746
+      redrock_spritesheet_6: 4288934229089277314
+      redrock_spritesheet_18: 7225925926512454317
+      redrock_spritesheet_39: -9119013242585924544
+      redrock_spritesheet_28: -6066726550727882161
+      redrock_spritesheet_42: 5585828542305175288
+      redrock_spritesheet_0: -9137086628493288674
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

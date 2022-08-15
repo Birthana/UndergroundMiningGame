@@ -156,7 +156,7 @@ TextureImporter:
       213: -5001331568369218495
     second: desert_spritesheet_50
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -176,6 +176,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -185,8 +187,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -207,9 +209,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1331,6 +1337,58 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      desert_spritesheet_5: -1119914723767202207
+      desert_spritesheet_35: -2679501927544810195
+      desert_spritesheet_36: -4495210665233185890
+      desert_spritesheet_12: 1013839348851237066
+      desert_spritesheet_31: -1717711939425949535
+      desert_spritesheet_10: -7794611185735475718
+      desert_spritesheet_7: -1705039455262607320
+      desert_spritesheet_25: 8322538798532218297
+      desert_spritesheet_33: 6649371450186163340
+      desert_spritesheet_47: -1746781569521088427
+      desert_spritesheet_21: 4043905281945591188
+      desert_spritesheet_6: -7285847430406410718
+      desert_spritesheet_3: -8946154380737330859
+      desert_spritesheet_38: -4097302963092764090
+      desert_spritesheet_2: -4010770558571702069
+      desert_spritesheet_18: 3609996400417786481
+      desert_spritesheet_16: 4488800677492628298
+      desert_spritesheet_19: -7270256173323037435
+      desert_spritesheet_23: 1864920523793616780
+      desert_spritesheet_46: 7139195072261476285
+      desert_spritesheet_50: -5001331568369218495
+      desert_spritesheet_32: -8628626720524042761
+      desert_spritesheet_48: 8870008601599564022
+      desert_spritesheet_9: 7497293331087774658
+      desert_spritesheet_41: -4195999263485803177
+      desert_spritesheet_11: -2274345586538311385
+      desert_spritesheet_37: 1119524820106427143
+      desert_spritesheet_34: 343218430608409037
+      desert_spritesheet_44: -6424563900820184481
+      desert_spritesheet_8: -2129496598198068528
+      desert_spritesheet_4: 7042053295392237873
+      desert_spritesheet_20: -2955971350085959665
+      desert_spritesheet_42: 9088390616254031942
+      desert_spritesheet_26: 2041709369224652455
+      desert_spritesheet_45: -3650289790109284117
+      desert_spritesheet_43: 1701516598115632421
+      desert_spritesheet_15: 1662214707413939351
+      desert_spritesheet_39: 2081347247752456532
+      desert_spritesheet_13: 3931532789295882689
+      desert_spritesheet_27: 5855150755700662245
+      desert_spritesheet_14: -6946199911644066463
+      desert_spritesheet_49: -237136967974555455
+      desert_spritesheet_28: 3796527337857569401
+      desert_spritesheet_30: -1472658546035013964
+      desert_spritesheet_40: -3188174588446229879
+      desert_spritesheet_29: -5745514461816918076
+      desert_spritesheet_0: 5539785800731589829
+      desert_spritesheet_1: 8819047404331541423
+      desert_spritesheet_22: 8521208982563394633
+      desert_spritesheet_17: 4365162102009229942
+      desert_spritesheet_24: -5118242438205092807
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

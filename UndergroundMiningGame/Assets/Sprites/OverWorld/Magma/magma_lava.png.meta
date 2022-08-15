@@ -78,7 +78,7 @@ TextureImporter:
       213: 2458141557516348839
     second: magma_lava_24
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -98,6 +98,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -107,8 +109,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -129,9 +131,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -707,6 +713,32 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      magma_lava_4: 2699222881983923162
+      magma_lava_11: 5093449229922400878
+      magma_lava_20: 7615469681555752393
+      magma_lava_14: -5547908381344009685
+      magma_lava_13: -6714225051606131105
+      magma_lava_7: -6846178422351304198
+      magma_lava_23: 5555537300796341891
+      magma_lava_18: 6149910577626484360
+      magma_lava_2: -554082003209380725
+      magma_lava_22: -5321344045711822016
+      magma_lava_0: 2755800709822160469
+      magma_lava_9: -4930998933978129268
+      magma_lava_12: 3439837935964155474
+      magma_lava_15: -2504620952475234890
+      magma_lava_17: -8865547355845814246
+      magma_lava_19: 5905644086360475948
+      magma_lava_24: 2458141557516348839
+      magma_lava_8: -1046929484696746637
+      magma_lava_6: -3235524719640936290
+      magma_lava_21: 9042624221734980953
+      magma_lava_1: -3618468993463103800
+      magma_lava_3: 6067977721443850228
+      magma_lava_5: -1444882364252412160
+      magma_lava_16: -6259752886367546067
+      magma_lava_10: 2746401256864767233
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

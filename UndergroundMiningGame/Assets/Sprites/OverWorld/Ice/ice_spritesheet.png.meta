@@ -129,7 +129,7 @@ TextureImporter:
       213: -965368012277680032
     second: ice_spritesheet_41
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -149,6 +149,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -158,8 +160,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -180,9 +182,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1115,6 +1121,49 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      ice_spritesheet_15: -6957796819676289555
+      ice_spritesheet_19: -9221637547402899869
+      ice_spritesheet_29: -7640580658828206735
+      ice_spritesheet_39: -7648797332818039601
+      ice_spritesheet_41: -965368012277680032
+      ice_spritesheet_40: -4478193186837269666
+      ice_spritesheet_36: 7691863716536615272
+      ice_spritesheet_26: 6815631839947741517
+      ice_spritesheet_30: 2001588476593077368
+      ice_spritesheet_2: 5667518746633417582
+      ice_spritesheet_35: 1005758809921542230
+      ice_spritesheet_1: -4543540661075662169
+      ice_spritesheet_9: 5168956079423537264
+      ice_spritesheet_18: -1944817069052668694
+      ice_spritesheet_10: -2246201310348285016
+      ice_spritesheet_14: 6641321348691355680
+      ice_spritesheet_32: -7825093554345204844
+      ice_spritesheet_6: 6581241089953245298
+      ice_spritesheet_0: 1370940416975198737
+      ice_spritesheet_5: -3703283955732479411
+      ice_spritesheet_21: 8879368514515751019
+      ice_spritesheet_12: -5334349488090227975
+      ice_spritesheet_37: -2220059730412174164
+      ice_spritesheet_17: 2463813519208780131
+      ice_spritesheet_33: 3062544249682486963
+      ice_spritesheet_38: -3763058684550086478
+      ice_spritesheet_3: -5050845094191700811
+      ice_spritesheet_34: -4225161694592715873
+      ice_spritesheet_24: -3943721624195034873
+      ice_spritesheet_7: 857233765490327300
+      ice_spritesheet_28: -5945575422387837506
+      ice_spritesheet_13: 1004165232529341885
+      ice_spritesheet_20: -1262091057354431622
+      ice_spritesheet_8: 6944403448098724318
+      ice_spritesheet_16: -554482464115871762
+      ice_spritesheet_31: 3314182685876736210
+      ice_spritesheet_22: -6350921832144039549
+      ice_spritesheet_25: -5499570613494755865
+      ice_spritesheet_4: 987578348475234968
+      ice_spritesheet_11: 1399395951988789116
+      ice_spritesheet_27: 7542525257002007088
+      ice_spritesheet_23: -4937559657015590853
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

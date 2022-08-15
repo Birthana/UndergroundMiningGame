@@ -42,7 +42,7 @@ TextureImporter:
       213: -7902700246380189917
     second: 32byrewards2_12
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -62,6 +62,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -71,8 +73,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -93,9 +95,13 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -419,6 +425,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      32byrewards2_2: -2913937664734674803
+      32byrewards2_5: -1813181581149743611
+      32byrewards2_7: -8016349567334659486
+      32byrewards2_9: 5858962434924738111
+      32byrewards2_10: 1783950971692871860
+      32byrewards2_8: -431753881565257838
+      32byrewards2_1: -7040172889996798573
+      32byrewards2_0: 2823634260169118126
+      32byrewards2_6: -5419297554044089721
+      32byrewards2_3: -7251252867899245280
+      32byrewards2_11: -7388963708565868184
+      32byrewards2_4: -1155480821637143702
+      32byrewards2_12: -7902700246380189917
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
