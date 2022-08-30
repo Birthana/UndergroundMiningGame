@@ -7,39 +7,31 @@ public class GemSpawner : MonoBehaviour
 {
     #region Field: Mining Board
     [Header("Mining Board")]
-    [SerializeField]
-    private Tilemap gemMap;
-    [SerializeField]
-    private int NUMBER_OF_COLUMNS;
-    [SerializeField]
-    private int NUMBER_OF_ROWS;
+
+    [SerializeField] private Tilemap gemMap;
+    [SerializeField] private int NUMBER_OF_COLUMNS;
+    [SerializeField] private int NUMBER_OF_ROWS;
     [Range(0, 1f)]
-    [SerializeField]
-    private float GEM_SPAWN_PERCENT;
+    [SerializeField] private float GEM_SPAWN_PERCENT;
     [Range(0, 5)]
-    [SerializeField]
-    private float VARIENCE;
+    [SerializeField] private float VARIENCE;
     #endregion
 
     #region Field: Gem Percentage 
     [Header("Gem Percentages")]
+
     [Range(0, .5f)]
-    [SerializeField]
-    private float LARGE_GEM_SPAWN;
+    [SerializeField] private float LARGE_GEM_SPAWN;
     [Range(0, .5f)]
-    [SerializeField]
-    private float MEDIUM_GEM_SPAWN;
+    [SerializeField] private float MEDIUM_GEM_SPAWN;
     private float SMALL_GEM_SPAWN;
     #endregion
 
     #region Field: Gem Sprites
     [Header("Sprites")]
-    [SerializeField]
-    private Sprite[] smallGemSprites;
-    [SerializeField]
-    private Sprite[] mediumGemSprites;
-    [SerializeField]
-    private Sprite[] largeGemSprites;
+    [SerializeField] private Sprite[] smallGemSprites;
+    [SerializeField] private Sprite[] mediumGemSprites;
+    [SerializeField] private Sprite[] largeGemSprites;
     #endregion
 
     #region Function: Setup
@@ -111,37 +103,44 @@ public class GemSpawner : MonoBehaviour
 
     private bool IsMediumGemAbleToSpawnAt(Vector3Int position)
     {
+        //TODO: Move to different function.
         bool result = position.x != NUMBER_OF_COLUMNS - 1 && position.y != NUMBER_OF_ROWS - 1;
         if (!result)
             return result;
-        Tile rngTile = GetBoardPosition(position);
-        Tile rngTile1 = GetBoardPosition(position + new Vector3Int(1, 0, 0));
-        Tile rngTile2 = GetBoardPosition(position + new Vector3Int(0, 1, 0));
-        Tile rngTile3 = GetBoardPosition(position + new Vector3Int(1, 1, 0));
-        return IsBoardPositionEmpty(rngTile) && IsBoardPositionEmpty(rngTile1) &&
-            IsBoardPositionEmpty(rngTile2) && IsBoardPositionEmpty(rngTile3);
+
+        Tile[] rngTiles = new Tile[4];
+        Vector3Int[] gemPositions = GetMediumGemPositions(position);
+
+        for (int i = 0; i < gemPositions.Length; i++)
+        {
+            rngTiles[i] = GetBoardPosition(gemPositions[i]);
+        }
+
+        return IsBoardPositionEmpty(rngTiles[0]) && IsBoardPositionEmpty(rngTiles[1]) &&
+            IsBoardPositionEmpty(rngTiles[2]) && IsBoardPositionEmpty(rngTiles[3]);
     }
 
     private bool IsLargeGemAbleToSpawnAt(Vector3Int position)
     {
+        //TODO: Move to different function.
         bool result = position.x != NUMBER_OF_COLUMNS - 1 && position.x != NUMBER_OF_COLUMNS - 2
             && position.y != NUMBER_OF_ROWS - 1 && position.y != NUMBER_OF_ROWS - 2;
         if (!result)
             return result;
-        Tile rngTile = GetBoardPosition(position);
-        Tile rngTile1 = GetBoardPosition(position + new Vector3Int(1, 0, 0));
-        Tile rngTile2 = GetBoardPosition(position + new Vector3Int(0, 1, 0));
-        Tile rngTile3 = GetBoardPosition(position + new Vector3Int(1, 1, 0));
-        Tile rngTile4 = GetBoardPosition(position + new Vector3Int(0, 2, 0));
-        Tile rngTile5 = GetBoardPosition(position + new Vector3Int(1, 2, 0));
-        Tile rngTile6 = GetBoardPosition(position + new Vector3Int(2, 0, 0));
-        Tile rngTile7 = GetBoardPosition(position + new Vector3Int(2, 1, 0));
-        Tile rngTile8 = GetBoardPosition(position + new Vector3Int(2, 2, 0));
-        return IsBoardPositionEmpty(rngTile) && IsBoardPositionEmpty(rngTile1) &&
-            IsBoardPositionEmpty(rngTile2) && IsBoardPositionEmpty(rngTile3) &&
-            IsBoardPositionEmpty(rngTile4) && IsBoardPositionEmpty(rngTile5) &&
-            IsBoardPositionEmpty(rngTile6) && IsBoardPositionEmpty(rngTile7) &&
-            IsBoardPositionEmpty(rngTile8);
+
+        Tile[] rngTiles = new Tile[9];
+        Vector3Int[] gemPositions = GetLargeGemPositions(position);
+
+        for (int i = 0; i < gemPositions.Length; i++)
+        {
+            rngTiles[i] = GetBoardPosition(gemPositions[i]);
+        }
+
+        return IsBoardPositionEmpty(rngTiles[0]) && IsBoardPositionEmpty(rngTiles[1]) &&
+            IsBoardPositionEmpty(rngTiles[2]) && IsBoardPositionEmpty(rngTiles[3]) &&
+            IsBoardPositionEmpty(rngTiles[4]) && IsBoardPositionEmpty(rngTiles[5]) &&
+            IsBoardPositionEmpty(rngTiles[6]) && IsBoardPositionEmpty(rngTiles[7]) &&
+            IsBoardPositionEmpty(rngTiles[8]);
     }
     #endregion
 
@@ -193,17 +192,24 @@ public class GemSpawner : MonoBehaviour
     {
         int rngMediumGem = Random.Range(0, mediumGemSprites.Length / 4);
 
-        Vector3Int bottomLeft = position;
-        Vector3Int bottomRight = position + new Vector3Int(1, 0, 0);
-        Vector3Int topLeft = position + new Vector3Int(0, 1, 0);
-        Vector3Int topRight = position + new Vector3Int(1, 1, 0);
+        Vector3Int[] gemPositions = GetMediumGemPositions(position);
 
-        SetTileWithSpriteAtPosition(mediumGemSprites[rngMediumGem * 4], bottomLeft);
-        SetTileWithSpriteAtPosition(mediumGemSprites[rngMediumGem * 4 + 1], bottomRight);
-        SetTileWithSpriteAtPosition(mediumGemSprites[rngMediumGem * 4 + 2], topLeft);
-        SetTileWithSpriteAtPosition(mediumGemSprites[rngMediumGem * 4 + 3], topRight);
+        for (int i = 0; i < gemPositions.Length; i++)
+        {
+            SetTileWithSpriteAtPosition(mediumGemSprites[rngMediumGem * 4 + i], 
+                gemPositions[i]);
+        }
 
         return new Gem(Gem.Size.MEDIUM, rngMediumGem, position);
+    }
+
+    private Vector3Int[] GetMediumGemPositions(Vector3Int position)
+    {
+        return new Vector3Int[] { position,
+            position + new Vector3Int(1, 0, 0),
+            position + new Vector3Int(0, 1, 0),
+            position + new Vector3Int(1, 1, 0)
+        };
     }
 
     private Gem SpawnLargeGem()
@@ -218,27 +224,30 @@ public class GemSpawner : MonoBehaviour
     {
         int rngLargeGem = Random.Range(0, largeGemSprites.Length / 9);
 
-        Vector3Int bottomLeft = position;
-        Vector3Int bottomMiddle = position + new Vector3Int(1, 0, 0);
-        Vector3Int bottomRight = position + new Vector3Int(2, 0, 0);
-        Vector3Int centerLeft = position + new Vector3Int(0, 1, 0);
-        Vector3Int centerMiddle = position + new Vector3Int(1, 1, 0);
-        Vector3Int centerRight = position + new Vector3Int(2, 1, 0);
-        Vector3Int topLeft = position + new Vector3Int(0, 2, 0);
-        Vector3Int topMiddle = position + new Vector3Int(1, 2, 0);
-        Vector3Int topRight = position + new Vector3Int(2, 2, 0);
+        Vector3Int[] gemPositions = GetLargeGemPositions(position);
 
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9], bottomLeft);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 1], bottomMiddle);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 2], bottomRight);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 3], centerLeft);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 4], centerMiddle);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 5], centerRight);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 6], topLeft);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 7], topMiddle);
-        SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + 8], topRight);
+        for (int i = 0; i < gemPositions.Length; i++)
+        {
+            SetTileWithSpriteAtPosition(largeGemSprites[rngLargeGem * 9 + i],
+                gemPositions[i]);
+        }
 
         return new Gem(Gem.Size.LARGE, rngLargeGem, position);
+    }
+
+    private Vector3Int[] GetLargeGemPositions(Vector3Int position)
+    {
+        return new Vector3Int[] {
+            position,
+            position + new Vector3Int(1, 0, 0),
+            position + new Vector3Int(2, 0, 0),
+            position + new Vector3Int(0, 1, 0),
+            position + new Vector3Int(1, 1, 0),
+            position + new Vector3Int(2, 1, 0),
+            position + new Vector3Int(0, 2, 0),
+            position + new Vector3Int(1, 2, 0),
+            position + new Vector3Int(2, 2, 0),
+        };
     }
     #endregion
 }
