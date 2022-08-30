@@ -66,7 +66,6 @@
     <Compile Include="Assets\Scripts\Unused\SmoothRandTable1.cs" />
     <Compile Include="Assets\Scripts\OverWorld\OptionsMenu.cs" />
     <Compile Include="Assets\Scripts\Unused\Gem.cs" />
-    <Compile Include="Assets\Scripts\Unused\GameManager.cs" />
     <Compile Include="Assets\Scripts\MiningGame\MinedGemsUI.cs" />
     <Compile Include="Assets\Scripts\OverWorld\DialogueSystem.cs" />
     <Compile Include="Assets\Scripts\InventoryItems\ToolItem.cs" />

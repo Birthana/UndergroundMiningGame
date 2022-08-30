@@ -5,10 +5,11 @@ using UnityEngine;
 public class Gem
 {
     public enum Size { SMALL, MEDIUM, LARGE };
-    public Size size_;
+    private Size size_;
     public int gemPosition;
-    private int size; //1, 2, or 3
-    Vector3Int position;
+    private Vector3Int position;
+
+    public int size;
 
     public static Size GetRandomWeightedSize(float smallPercent, float mediumPercent, float LargePercent)
     {
@@ -27,6 +28,7 @@ public class Gem
         }
     }
 
+    #region Function: Constructors
     public Gem(int newGemPosition, int newSize, Vector3Int newPosition)
     {
         gemPosition = newGemPosition;
@@ -39,20 +41,22 @@ public class Gem
         gemPosition = newGemPosition;
         position = newPosition;
     }
+    #endregion
 
-
+    #region Function: Setters & Getters
     public int getGemPosition()
     {
         return gemPosition;
     }
 
-    public int getSize()
+    public Size GetSize()
     {
-        return size;
+        return size_;
     }
 
     public Vector3Int getPosition()
     {
         return position;
     }
+    #endregion
 }

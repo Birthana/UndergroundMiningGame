@@ -161,7 +161,7 @@ public class Boss_GameManager : MonoBehaviour
             {
                 if (Gem != null)
                 {
-                    if (Gem.getSize() == 1)
+                    if (Gem.GetSize() == Gem.Size.SMALL)
                     {
                         if (!tilemap[0].HasTile(Gem.getPosition()) && !tilemap[1].HasTile(Gem.getPosition()))
                         {
@@ -183,7 +183,7 @@ public class Boss_GameManager : MonoBehaviour
                             MinedGemsUI.instance.AddMinedItem(smallGemItems[Gem.getGemPosition()]);
                         }
                     }
-                    else if (Gem.getSize() == 2)
+                    else if (Gem.GetSize() == Gem.Size.MEDIUM)
                     {
                         if (!(tilemap[0].HasTile(Gem.getPosition())
                             || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(1, 0, 0))
@@ -206,7 +206,7 @@ public class Boss_GameManager : MonoBehaviour
                             MinedGemsUI.instance.AddMinedItem(mediumGemItems[Gem.getGemPosition()]);
                         }
                     }
-                    else if (Gem.getSize() == 3)
+                    else if (Gem.GetSize() == Gem.Size.LARGE)
                     {
                         if (!(tilemap[0].HasTile(Gem.getPosition())
                             || tilemap[0].HasTile(Gem.getPosition() + new Vector3Int(0, 1, 0))
