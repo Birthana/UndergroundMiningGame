@@ -29,6 +29,7 @@ public class GemSpawner : MonoBehaviour
 
     #region Field: Gem Sprites
     [Header("Sprites")]
+
     [SerializeField] private Sprite[] smallGemSprites;
     [SerializeField] private Sprite[] mediumGemSprites;
     [SerializeField] private Sprite[] largeGemSprites;
@@ -96,6 +97,18 @@ public class GemSpawner : MonoBehaviour
         return tile == null;
     }
 
+    private bool IsGemAbleToSpawn(Vector3Int[] gemPositions)
+    {
+        Tile[] rngTiles = new Tile[gemPositions.Length];
+        for (int i = 0; i < gemPositions.Length; i++)
+        {
+            rngTiles[i] = GetBoardPosition(gemPositions[i]);
+            if (!IsBoardPositionEmpty(rngTiles[i]))
+                return false;
+        }
+        return true;
+    }
+
     private bool IsSmallGemAbleToSpawnAt(Vector3Int position)
     {
         return IsBoardPositionEmpty(GetBoardPosition(position));
@@ -103,45 +116,27 @@ public class GemSpawner : MonoBehaviour
 
     private bool IsMediumGemAbleToSpawnAt(Vector3Int position)
     {
-        //TODO: Move to different function.
-        bool result = position.x != NUMBER_OF_COLUMNS - 1 && position.y != NUMBER_OF_ROWS - 1;
-        if (!result)
-            return result;
+        return !IsMediumGemAtTopRightEdge(position) && 
+            IsGemAbleToSpawn(GetMediumGemPositions(position));
+    }
 
-        Tile[] rngTiles = new Tile[4];
-        Vector3Int[] gemPositions = GetMediumGemPositions(position);
-
-        for (int i = 0; i < gemPositions.Length; i++)
-        {
-            rngTiles[i] = GetBoardPosition(gemPositions[i]);
-        }
-
-        return IsBoardPositionEmpty(rngTiles[0]) && IsBoardPositionEmpty(rngTiles[1]) &&
-            IsBoardPositionEmpty(rngTiles[2]) && IsBoardPositionEmpty(rngTiles[3]);
+    private bool IsMediumGemAtTopRightEdge(Vector3Int position)
+    {
+        return position.x == NUMBER_OF_COLUMNS - 1 || position.y == NUMBER_OF_ROWS - 1;
     }
 
     private bool IsLargeGemAbleToSpawnAt(Vector3Int position)
     {
-        //TODO: Move to different function.
-        bool result = position.x != NUMBER_OF_COLUMNS - 1 && position.x != NUMBER_OF_COLUMNS - 2
-            && position.y != NUMBER_OF_ROWS - 1 && position.y != NUMBER_OF_ROWS - 2;
-        if (!result)
-            return result;
-
-        Tile[] rngTiles = new Tile[9];
-        Vector3Int[] gemPositions = GetLargeGemPositions(position);
-
-        for (int i = 0; i < gemPositions.Length; i++)
-        {
-            rngTiles[i] = GetBoardPosition(gemPositions[i]);
-        }
-
-        return IsBoardPositionEmpty(rngTiles[0]) && IsBoardPositionEmpty(rngTiles[1]) &&
-            IsBoardPositionEmpty(rngTiles[2]) && IsBoardPositionEmpty(rngTiles[3]) &&
-            IsBoardPositionEmpty(rngTiles[4]) && IsBoardPositionEmpty(rngTiles[5]) &&
-            IsBoardPositionEmpty(rngTiles[6]) && IsBoardPositionEmpty(rngTiles[7]) &&
-            IsBoardPositionEmpty(rngTiles[8]);
+        return !IsLargeGemAtTopRightEdge(position) &&
+            IsGemAbleToSpawn(GetLargeGemPositions(position));
     }
+
+    private bool IsLargeGemAtTopRightEdge(Vector3Int position)
+    {
+        return position.x == NUMBER_OF_COLUMNS - 1 || position.x == NUMBER_OF_COLUMNS - 2
+            || position.y == NUMBER_OF_ROWS - 1 || position.y == NUMBER_OF_ROWS - 2;
+    }
+
     #endregion
 
     #region Function: Gem Spawning
